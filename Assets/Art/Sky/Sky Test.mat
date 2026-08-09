@@ -119,7 +119,7 @@ Material:
     - _AlphaMax: 1
     - _AlphaMin: 0
     - _AlphaToMask: 0
-    - _BendExponent: 9.5
+    - _BendExponent: 10
     - _BendHeightOffset: 0
     - _Bias: -0.4
     - _Blend: 0
@@ -142,20 +142,23 @@ Material:
     - _CloudSharpness: 1
     - _CloudSmoothness: 0
     - _Cull: 2
-    - _Cutoff: 0.526
+    - _Cutoff: 0.385
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _EdgeCutoff: 0.502
+    - _EdgeSize: 0.992
+    - _EdgeSmoothness: 0.128
     - _EnvironmentReflections: 1
     - _FarClip: 2000
-    - _Float0: 1
+    - _Float0: 3
     - _Gain: 0.5
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GradientEdgeSmoothness: 0
-    - _GradientStrength: 0.42
+    - _GradientStrength: 1
     - _H: 1
     - _HorizonCoverage: 0.16
     - _HorizonExponent: 3
@@ -163,9 +166,12 @@ Material:
     - _HorizonFadeHeight: 0
     - _HorizonHeight: 0
     - _InteriorCoverage: 0.195
+    - _InteriorCutoff: 0.509
     - _InteriorIntensity: 0
+    - _InteriorLighting: 0.256
     - _InteriorMultiplier: 1
     - _InteriorSharpness: 3.5
+    - _InteriorSmoothness: 0.21
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Octaves: 4
@@ -175,9 +181,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _ScrollDirection: 200
+    - _ScrollDirection: 0
     - _ScrollSpeed: 0.1
-    - _Smoothness: 0.061
+    - _Smoothness: 0.21
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SphereMultiplier: 0
@@ -185,16 +191,17 @@ Material:
     - _SrcBlendAlpha: 1
     - _Strngth: 14.42
     - _SunOffsetScale: 0
-    - _SunnySkyExponent: 9
+    - _SunnySkyExponent: 67
     - _Surface: 0
     - _Test: 0
     - _TestAmplitude: 0.37
     - _TestFrequency: 9.06
     - _TestH: 1
+    - _UVSCALE: 1.95
     - _Warp: 0.03
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
-    - _Z: 0.24
+    - _Z: 0
     - _ZWrite: 1
     - _al: -0.09
     - _cutoff: 0
@@ -208,7 +215,7 @@ Material:
     - _test: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _CloudColour: {r: 0.36569053, g: 0.49722654, b: 0.6075471, a: 1}
+    - _CloudColour: {r: 0.3656905, g: 0.49722648, b: 0.60754704, a: 1}
     - _CloudDarkColour: {r: 0.9607843, g: 0.72156864, b: 0, a: 1}
     - _CloudHorizonFade: {r: 0, g: 0.33549225, b: 0, a: 0}
     - _CloudInterior: {r: 0.5816493, g: 0.92296016, b: 0, a: 0}
@@ -217,18 +224,20 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 1, g: 0.84313726, b: 0.63529414, a: 1}
     - _DarkCloudColour: {r: 0.71117556, g: 0.71117556, b: 0.71117556, a: 1}
+    - _EdgeColour: {r: 1, g: 0.57641834, b: 0.20609587, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HorizonColour: {r: 1, g: 0.58040816, b: 0, a: 0.9019608}
     - _HorizonCoverage: {r: 0.7419355, g: 1, b: 0, a: 0}
     - _HorizonShape: {r: 0.46505418, g: 0.9166664, b: 0, a: 0}
     - _HorizonShape1: {r: 0.8064522, g: 0.9892473, b: 0, a: 0}
+    - _InteriorColour: {r: 0, g: 0, b: 0, a: 0.13333334}
     - _InteriorShape: {r: 0.5156951, g: 0.80179715, b: 0, a: 0}
     - _NoiseFrequencies: {r: 1.07, g: 1.7, b: 4, a: 0}
     - _ScrollSpeed: {r: 0.1, g: 0.05, b: -0.2, a: -0.1}
     - _SkyColour: {r: 0.39341006, g: 0.6503525, b: 0.8417997, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SunOffset: {r: 0.09, g: 0, b: 0.01, a: 0}
-    - _SunnyCloudColour: {r: 1, g: 0.7262758, b: 0.24719602, a: 1}
+    - _SunnyCloudColour: {r: 0.3647059, g: 0.49803922, b: 0.60784316, a: 1}
     - _SunnySkyColour: {r: 0.40328878, g: 0.70262396, b: 0.78867924, a: 1}
     - _SunnySkyShape: {r: 0, g: 0.25, b: 0, a: 0}
     - _Vector0: {r: 0.2942809, g: 0.7601965, b: 0, a: 0}
