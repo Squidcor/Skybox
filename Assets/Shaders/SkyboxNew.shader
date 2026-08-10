@@ -15,6 +15,8 @@ Shader "Skybox New"
 		_ScrollSpeed( "Scroll Speed", Range( 0, 1 ) ) = 0
 		_BendExponent( "Bend Exponent", Range( 1, 50 ) ) = 5
 		_ScrollDirection( "Scroll Direction", Range( 0, 360 ) ) = 0
+		_CloudHorizonStrength( "Cloud Horizon Strength", Range( 0, 1 ) ) = 0
+		_CloudHorizonHeight( "Cloud Horizon Height", Range( 0, 1 ) ) = 0
 		[PowerSlider(3)] _SunPierceExponent( "Sun Pierce Exponent", Range( 0, 3000 ) ) = 1
 		_CloudScale( "Cloud Scale", Float ) = 0
 		_EdgeCutoff( "Edge Cutoff", Range( 0, 1 ) ) = 0
@@ -150,6 +152,8 @@ Shader "Skybox New"
 				uniform float _InteriorPierceBlocking;
 				uniform float _Cutoff;
 				uniform float _Smoothness;
+				uniform float _CloudHorizonHeight;
+				uniform float _CloudHorizonStrength;
 
 
 				float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
@@ -221,70 +225,72 @@ Shader "Skybox New"
 					float temp_output_118_0_g451 = ( 1.0 - ( _SunSize * 0.01 ) );
 					float smoothstepResult121_g451 = smoothstep( temp_output_118_0_g451 , 1.0 , temp_output_77_0_g451);
 					float3 lerpResult112_g451 = lerp( lerpResult29_g451 , _SunColour.rgb , ( _SunColour.a * smoothstepResult121_g451 ));
-					float temp_output_2_0_g701 = _InteriorCutoff;
-					float temp_output_27_0_g703 = radians( _ScrollDirection );
-					float2 appendResult25_g703 = (float2(cos( temp_output_27_0_g703 ) , sin( temp_output_27_0_g703 )));
-					float3 temp_output_1_0_g706 = float3( 0,0,0 );
-					float3 temp_output_4_0_g706 = float3( 0,1,0 );
+					float temp_output_2_0_g773 = _InteriorCutoff;
+					float temp_output_27_0_g775 = radians( _ScrollDirection );
+					float2 appendResult25_g775 = (float2(cos( temp_output_27_0_g775 ) , sin( temp_output_27_0_g775 )));
+					float3 temp_output_1_0_g778 = float3( 0,0,0 );
+					float3 temp_output_4_0_g778 = float3( 0,1,0 );
 					#if ( SHADER_TARGET >= 50 )
-					float recip510_g698 = rcp( _CloudScale );
+					float recip510_g770 = rcp( _CloudScale );
 					#else
-					float recip510_g698 = 1.0 / _CloudScale;
+					float recip510_g770 = 1.0 / _CloudScale;
 					#endif
-					float3 appendResult13_g705 = (float3(0.0 , recip510_g698 , 0.0));
-					float dotResult5_g706 = dot( temp_output_4_0_g706 , ( appendResult13_g705 - temp_output_1_0_g706 ) );
-					float3 temp_output_38_0_g698 = ase_viewDirWS;
-					float3 temp_output_34_0_g703 = temp_output_38_0_g698;
-					float3 temp_output_2_0_g706 = -temp_output_34_0_g703;
-					float dotResult8_g706 = dot( temp_output_4_0_g706 , temp_output_2_0_g706 );
-					float3 break14_g705 = ( temp_output_1_0_g706 + ( ( dotResult5_g706 / dotResult8_g706 ) * temp_output_2_0_g706 ) );
-					float2 appendResult20_g705 = (float2(break14_g705.x , break14_g705.z));
-					float2 lerpResult28_g705 = lerp( appendResult20_g705 , float2( 0,0 ) , pow( ( 1.0 - -temp_output_34_0_g703.y ) , _BendExponent ));
-					float2 panner31_g703 = ( -0.1 * _Time.y * ( appendResult25_g703 * _ScrollSpeed ) + lerpResult28_g705);
-					float2 UV16_g703 = panner31_g703;
-					int Octaves16_g703 = _Octaves;
-					float Gain16_g703 = 0.5;
-					float Lacunarity16_g703 = 2.0;
-					float GradientStrength16_g703 = _GradientStrength;
-					float4 localFBMWithGradient16_g703 = FBMWithGradient( UV16_g703 , Octaves16_g703 , Gain16_g703 , Lacunarity16_g703 , GradientStrength16_g703 );
-					float temp_output_14_0_g703 = (localFBMWithGradient16_g703).x;
-					float temp_output_533_39_g698 = temp_output_14_0_g703;
-					float smoothstepResult12_g701 = smoothstep( temp_output_2_0_g701 , min( ( temp_output_2_0_g701 + _InteriorSmoothness ), 1.0 ) , temp_output_533_39_g698);
-					float temp_output_1025_516 = smoothstepResult12_g701;
-					float3 lerpResult966 = lerp( _CloudColour.rgb , _InteriorColour.rgb , ( _InteriorColour.a * temp_output_1025_516 ));
-					float3 temp_output_1_0_g700 = float3( 0,0,0 );
-					float3 temp_output_4_0_g700 = float3( 0,1,0 );
-					float3 appendResult457_g698 = (float3(0.0 , recip510_g698 , 0.0));
-					float dotResult5_g700 = dot( temp_output_4_0_g700 , ( appendResult457_g698 - temp_output_1_0_g700 ) );
-					float3 temp_output_39_0_g698 = ase_mainLightDirection;
-					float3 temp_output_2_0_g700 = temp_output_39_0_g698;
-					float dotResult8_g700 = dot( temp_output_4_0_g700 , temp_output_2_0_g700 );
-					float3 temp_output_1_0_g699 = float3( 0,0,0 );
-					float3 temp_output_4_0_g699 = float3( 0,1,0 );
-					float dotResult5_g699 = dot( temp_output_4_0_g699 , ( appendResult457_g698 - temp_output_1_0_g699 ) );
-					float3 temp_output_2_0_g699 = temp_output_38_0_g698;
-					float dotResult8_g699 = dot( temp_output_4_0_g699 , temp_output_2_0_g699 );
-					float3 normalizeResult459_g698 = normalize( ( ( temp_output_1_0_g700 + ( ( dotResult5_g700 / dotResult8_g700 ) * temp_output_2_0_g700 ) ) - ( temp_output_1_0_g699 + ( ( dotResult5_g699 / dotResult8_g699 ) * temp_output_2_0_g699 ) ) ) );
-					float3 break461_g698 = normalizeResult459_g698;
-					float3 appendResult491_g698 = (float3(break461_g698.x , break461_g698.z , 0.0));
-					float3 normalizeResult440_g698 = normalize( appendResult491_g698 );
-					float3 temp_output_533_0_g698 = (localFBMWithGradient16_g703).yzw;
-					float dotResult434_g698 = dot( normalizeResult440_g698 , temp_output_533_0_g698 );
-					float temp_output_2_0_g702 = _EdgeCutoff;
-					float smoothstepResult12_g702 = smoothstep( temp_output_2_0_g702 , min( ( temp_output_2_0_g702 + _EdgeSmoothness ), 1.0 ) , temp_output_533_39_g698);
-					float3 lerpResult965 = lerp( lerpResult966 , _EdgeColour.rgb , ( _EdgeColour.a * ( saturate( dotResult434_g698 ) * ( 1.0 - smoothstepResult12_g702 ) ) ));
-					float dotResult521_g698 = dot( -temp_output_39_0_g698 , temp_output_38_0_g698 );
-					float temp_output_520_0_g698 = ( ( dotResult521_g698 + 1.0 ) * 0.5 );
-					float3 appendResult527_g698 = (float3(break461_g698.x , break461_g698.z , 1.0));
-					float3 normalizeResult526_g698 = normalize( appendResult527_g698 );
-					float dotResult529_g698 = dot( normalizeResult526_g698 , temp_output_533_0_g698 );
-					float temp_output_1025_525 = saturate( max( saturate( pow( temp_output_520_0_g698 , ( _SunPierceExponent * 2.0 ) ) ), ( pow( temp_output_520_0_g698 , _SunPierceExponent ) * dotResult529_g698 ) ) );
-					float lerpResult1024 = lerp( temp_output_1025_525 , ( ( 1.0 - temp_output_1025_516 ) * temp_output_1025_525 ) , _InteriorPierceBlocking);
+					float3 appendResult13_g777 = (float3(0.0 , recip510_g770 , 0.0));
+					float dotResult5_g778 = dot( temp_output_4_0_g778 , ( appendResult13_g777 - temp_output_1_0_g778 ) );
+					float3 temp_output_38_0_g770 = ase_viewDirWS;
+					float3 temp_output_34_0_g775 = temp_output_38_0_g770;
+					float3 temp_output_2_0_g778 = -temp_output_34_0_g775;
+					float dotResult8_g778 = dot( temp_output_4_0_g778 , temp_output_2_0_g778 );
+					float3 break14_g777 = ( temp_output_1_0_g778 + ( ( dotResult5_g778 / dotResult8_g778 ) * temp_output_2_0_g778 ) );
+					float2 appendResult20_g777 = (float2(break14_g777.x , break14_g777.z));
+					float2 lerpResult28_g777 = lerp( appendResult20_g777 , float2( 0,0 ) , pow( ( 1.0 - -temp_output_34_0_g775.y ) , _BendExponent ));
+					float2 panner31_g775 = ( -0.1 * _Time.y * ( appendResult25_g775 * _ScrollSpeed ) + lerpResult28_g777);
+					float2 UV16_g775 = panner31_g775;
+					int Octaves16_g775 = _Octaves;
+					float Gain16_g775 = 0.5;
+					float Lacunarity16_g775 = 2.0;
+					float GradientStrength16_g775 = _GradientStrength;
+					float4 localFBMWithGradient16_g775 = FBMWithGradient( UV16_g775 , Octaves16_g775 , Gain16_g775 , Lacunarity16_g775 , GradientStrength16_g775 );
+					float temp_output_14_0_g775 = (localFBMWithGradient16_g775).x;
+					float temp_output_560_39_g770 = temp_output_14_0_g775;
+					float smoothstepResult12_g773 = smoothstep( temp_output_2_0_g773 , min( ( temp_output_2_0_g773 + _InteriorSmoothness ), 1.0 ) , temp_output_560_39_g770);
+					float temp_output_1036_516 = smoothstepResult12_g773;
+					float3 lerpResult966 = lerp( _CloudColour.rgb , _InteriorColour.rgb , ( _InteriorColour.a * temp_output_1036_516 ));
+					float3 temp_output_1_0_g772 = float3( 0,0,0 );
+					float3 temp_output_4_0_g772 = float3( 0,1,0 );
+					float3 appendResult457_g770 = (float3(0.0 , recip510_g770 , 0.0));
+					float dotResult5_g772 = dot( temp_output_4_0_g772 , ( appendResult457_g770 - temp_output_1_0_g772 ) );
+					float3 temp_output_39_0_g770 = ase_mainLightDirection;
+					float3 temp_output_2_0_g772 = temp_output_39_0_g770;
+					float dotResult8_g772 = dot( temp_output_4_0_g772 , temp_output_2_0_g772 );
+					float3 temp_output_1_0_g771 = float3( 0,0,0 );
+					float3 temp_output_4_0_g771 = float3( 0,1,0 );
+					float dotResult5_g771 = dot( temp_output_4_0_g771 , ( appendResult457_g770 - temp_output_1_0_g771 ) );
+					float3 temp_output_2_0_g771 = temp_output_38_0_g770;
+					float dotResult8_g771 = dot( temp_output_4_0_g771 , temp_output_2_0_g771 );
+					float3 normalizeResult459_g770 = normalize( ( ( temp_output_1_0_g772 + ( ( dotResult5_g772 / dotResult8_g772 ) * temp_output_2_0_g772 ) ) - ( temp_output_1_0_g771 + ( ( dotResult5_g771 / dotResult8_g771 ) * temp_output_2_0_g771 ) ) ) );
+					float3 break461_g770 = normalizeResult459_g770;
+					float3 appendResult491_g770 = (float3(break461_g770.x , break461_g770.z , 0.0));
+					float3 normalizeResult440_g770 = normalize( appendResult491_g770 );
+					float3 temp_output_560_0_g770 = (localFBMWithGradient16_g775).yzw;
+					float dotResult434_g770 = dot( normalizeResult440_g770 , temp_output_560_0_g770 );
+					float temp_output_2_0_g774 = _EdgeCutoff;
+					float smoothstepResult12_g774 = smoothstep( temp_output_2_0_g774 , min( ( temp_output_2_0_g774 + _EdgeSmoothness ), 1.0 ) , temp_output_560_39_g770);
+					float3 lerpResult965 = lerp( lerpResult966 , _EdgeColour.rgb , ( _EdgeColour.a * ( saturate( dotResult434_g770 ) * ( 1.0 - smoothstepResult12_g774 ) ) ));
+					float dotResult521_g770 = dot( -temp_output_39_0_g770 , temp_output_38_0_g770 );
+					float temp_output_520_0_g770 = ( ( dotResult521_g770 + 1.0 ) * 0.5 );
+					float3 appendResult527_g770 = (float3(break461_g770.x , break461_g770.z , 1.0));
+					float3 normalizeResult526_g770 = normalize( appendResult527_g770 );
+					float dotResult529_g770 = dot( normalizeResult526_g770 , temp_output_560_0_g770 );
+					float temp_output_1036_525 = saturate( max( saturate( pow( temp_output_520_0_g770 , ( _SunPierceExponent * 2.0 ) ) ), ( pow( temp_output_520_0_g770 , _SunPierceExponent ) * dotResult529_g770 ) ) );
+					float lerpResult1024 = lerp( temp_output_1036_525 , ( ( 1.0 - temp_output_1036_516 ) * temp_output_1036_525 ) , _InteriorPierceBlocking);
 					float3 lerpResult1026 = lerp( lerpResult965 , _PierceColour.rgb , ( lerpResult1024 * _PierceColour.a ));
-					float temp_output_2_0_g704 = _Cutoff;
-					float smoothstepResult12_g704 = smoothstep( temp_output_2_0_g704 , min( ( temp_output_2_0_g704 + _Smoothness ), 1.0 ) , temp_output_14_0_g703);
-					float temp_output_4_0_g703 = saturate( smoothstepResult12_g704 );
-					float3 lerpResult828 = lerp( lerpResult112_g451 , lerpResult1026 , ( _CloudColour.a * ( step( temp_output_34_0_g703.y , 0.0 ) * temp_output_4_0_g703 ) ));
+					float temp_output_2_0_g776 = _Cutoff;
+					float smoothstepResult19_g775 = smoothstep( 0.0 , _CloudHorizonHeight , -temp_output_34_0_g775.y);
+					float temp_output_17_0_g775 = ( ( 1.0 - smoothstepResult19_g775 ) * _CloudHorizonStrength );
+					float smoothstepResult12_g776 = smoothstep( temp_output_2_0_g776 , min( ( temp_output_2_0_g776 + _Smoothness ), 1.0 ) , ( temp_output_17_0_g775 + temp_output_14_0_g775 ));
+					float temp_output_4_0_g775 = saturate( smoothstepResult12_g776 );
+					float3 lerpResult828 = lerp( lerpResult112_g451 , lerpResult1026 , ( _CloudColour.a * ( step( temp_output_34_0_g775.y , 0.0 ) * temp_output_4_0_g775 ) ));
 					
 
 					float3 Color = lerpResult828;
@@ -451,25 +457,23 @@ Version=19912
 {"type":"AmplifyShaderEditor.ViewDirInputsCoordNode, AmplifyShaderEditor","id":529,"pos":[3160,-568],"params":["Inherit","False","World","False","0","4","FLOAT3","0","FLOAT","1","FLOAT","2","FLOAT","3"]}
 {"type":"AmplifyShaderEditor.LerpOp, AmplifyShaderEditor","id":828,"pos":[5696,-360],"params":["Inherit","False","3","0","FLOAT3","0,0,0","False","1","FLOAT3","0,0,0","False","2","FLOAT","0","False","1","FLOAT3","0"]}
 {"type":"AmplifyShaderEditor.MainLight, AmplifyShaderEditor","id":528,"pos":[3120,-160],"params":["Inherit","False","0","5","FLOAT3","0","FLOAT3","1","FLOAT3","2","FLOAT","3","FLOAT","4"]}
-{"type":"AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor","id":982,"pos":[3624,-536],"params":["Inherit","False","SkyboxColour","25","","451","0c3f98426aec4244b83898e14f7900cd","0","2","98","FLOAT3","0,0,0","False","68","FLOAT3","0,0,0","False","1","FLOAT3","0"]}
-{"type":"AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor","id":1019,"pos":[3520,304],"params":["Inherit","False","Property","_InteriorPierceSmoothness","InteriorPierceSmoothness","23","0","Create","True","0","0","0","False","0","False","Object","-1","","0","0.894","0","1","0","1","FLOAT","0"]}
-{"type":"AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor","id":1018,"pos":[3504,232],"params":["Inherit","False","Property","_InteriorPierceCutoff","Interior Pierce Cutoff","22","0","Create","True","0","0","0","False","0","False","Object","-1","","0","0.837","0","1","0","1","FLOAT","0"]}
+{"type":"AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor","id":982,"pos":[3624,-536],"params":["Inherit","False","SkyboxColour","23","","451","0c3f98426aec4244b83898e14f7900cd","0","2","98","FLOAT3","0,0,0","False","68","FLOAT3","0,0,0","False","1","FLOAT3","0"]}
 {"type":"AmplifyShaderEditor.LerpOp, AmplifyShaderEditor","id":966,"pos":[5200,-8],"params":["Inherit","False","3","0","FLOAT3","0,0,0","False","1","FLOAT3","0,0,0","False","2","FLOAT","0","False","1","FLOAT3","0"]}
 {"type":"AmplifyShaderEditor.LerpOp, AmplifyShaderEditor","id":965,"pos":[5440,336],"params":["Inherit","False","3","0","FLOAT3","0,0,0","False","1","FLOAT3","0,0,0","False","2","FLOAT","0","False","1","FLOAT3","0"]}
 {"type":"AmplifyShaderEditor.SimpleMultiplyOpNode, AmplifyShaderEditor","id":970,"pos":[5176,-280],"params":["Inherit","False","2","2","0","FLOAT","0","False","1","FLOAT","0","False","1","FLOAT","0"]}
-{"type":"AmplifyShaderEditor.ColorNode, AmplifyShaderEditor","id":964,"pos":[4736,-360],"params":["Inherit","False","Property","_CloudColour","Cloud Colour","0","0","Create","True","0","0","0","False","0","False","Object","-1","","0,0,0,0","0.3882338,0.4508415,0.490196,1","True","True","0","6","COLOR","0","FLOAT","1","FLOAT","2","FLOAT","3","FLOAT","4","FLOAT3","5"]}
-{"type":"AmplifyShaderEditor.ColorNode, AmplifyShaderEditor","id":963,"pos":[4792,-64],"params":["Inherit","False","Property","_InteriorColour","Interior Colour","1","0","Create","True","0","0","0","False","0","False","Object","-1","","0,0,0,0","0.1017003,0.09594022,0.2641495,0.454902","True","True","0","6","COLOR","0","FLOAT","1","FLOAT","2","FLOAT","3","FLOAT","4","FLOAT3","5"]}
+{"type":"AmplifyShaderEditor.ColorNode, AmplifyShaderEditor","id":964,"pos":[4736,-360],"params":["Inherit","False","Property","_CloudColour","Cloud Colour","0","0","Create","True","0","0","0","False","0","False","Object","-1","","0,0,0,0","0.3882335,0.4508415,0.490196,1","True","True","0","6","COLOR","0","FLOAT","1","FLOAT","2","FLOAT","3","FLOAT","4","FLOAT3","5"]}
+{"type":"AmplifyShaderEditor.ColorNode, AmplifyShaderEditor","id":963,"pos":[4792,-64],"params":["Inherit","False","Property","_InteriorColour","Interior Colour","1","0","Create","True","0","0","0","False","0","False","Object","-1","","0,0,0,0","0.1017001,0.09593994,0.2641492,0.5764706","True","True","0","6","COLOR","0","FLOAT","1","FLOAT","2","FLOAT","3","FLOAT","4","FLOAT3","5"]}
 {"type":"AmplifyShaderEditor.SimpleMultiplyOpNode, AmplifyShaderEditor","id":962,"pos":[5056,144],"params":["Inherit","False","2","2","0","FLOAT","0","False","1","FLOAT","0","False","1","FLOAT","0"]}
 {"type":"AmplifyShaderEditor.SimpleMultiplyOpNode, AmplifyShaderEditor","id":969,"pos":[5160,440],"params":["Inherit","False","2","2","0","FLOAT","0","False","1","FLOAT","0","False","1","FLOAT","0"]}
 {"type":"AmplifyShaderEditor.ColorNode, AmplifyShaderEditor","id":967,"pos":[4848,288],"params":["Inherit","False","Property","_EdgeColour","Edge Colour","2","1","[HDR]","Create","True","0","0","0","False","0","False","Object","-1","","0,0,0,0","11.31371,0.9649343,0,1","True","True","0","6","COLOR","0","FLOAT","1","FLOAT","2","FLOAT","3","FLOAT","4","FLOAT3","5"]}
 {"type":"AmplifyShaderEditor.LerpOp, AmplifyShaderEditor","id":1024,"pos":[4424,600],"params":["Inherit","False","3","0","FLOAT","0","False","1","FLOAT","0","False","2","FLOAT","0","False","1","FLOAT","0"]}
-{"type":"AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor","id":1025,"pos":[3608,8],"params":["Inherit","False","SkyboxCloudColour","4","","698","e35217d2a61917344908c1fffe4ec998","0","2","38","FLOAT3","0,0,0","False","39","FLOAT3","0,0,0","False","4","FLOAT","525","FLOAT","515","FLOAT","516","FLOAT","401"]}
-{"type":"AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor","id":1014,"pos":[3776,680],"params":["Inherit","False","Property","_InteriorPierceBlocking","Interior Pierce Blocking","24","0","Create","True","0","0","0","False","0","False","Object","-1","","0","0.993","0","1","0","1","FLOAT","0"]}
+{"type":"AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor","id":1014,"pos":[3776,680],"params":["Inherit","False","Property","_InteriorPierceBlocking","Interior Pierce Blocking","22","0","Create","True","0","0","0","False","0","False","Object","-1","","0","0.5","0","1","0","1","FLOAT","0"]}
 {"type":"AmplifyShaderEditor.SimpleMultiplyOpNode, AmplifyShaderEditor","id":1016,"pos":[4176,544],"params":["Inherit","False","2","2","0","FLOAT","0","False","1","FLOAT","0","False","1","FLOAT","0"]}
 {"type":"AmplifyShaderEditor.OneMinusNode, AmplifyShaderEditor","id":1022,"pos":[3912,568],"params":["Inherit","False","1","0","FLOAT","0","False","1","FLOAT","0"]}
 {"type":"AmplifyShaderEditor.LerpOp, AmplifyShaderEditor","id":1026,"pos":[5664,312],"params":["Inherit","False","3","0","FLOAT3","0,0,0","False","1","FLOAT3","0,0,0","False","2","FLOAT","0","False","1","FLOAT3","0"]}
-{"type":"AmplifyShaderEditor.ColorNode, AmplifyShaderEditor","id":1027,"pos":[5200,624],"params":["Inherit","False","Property","_PierceColour","Pierce Colour","3","1","[HDR]","Create","True","0","0","0","False","0","False","Object","-1","","0,0,0,0","145.3186,12.39407,0,1","True","True","0","6","COLOR","0","FLOAT","1","FLOAT","2","FLOAT","3","FLOAT","4","FLOAT3","5"]}
+{"type":"AmplifyShaderEditor.ColorNode, AmplifyShaderEditor","id":1027,"pos":[5200,624],"params":["Inherit","False","Property","_PierceColour","Pierce Colour","3","1","[HDR]","Create","True","0","0","0","False","0","False","Object","-1","","0,0,0,0","4.541207,0.09375719,0,1","True","True","0","6","COLOR","0","FLOAT","1","FLOAT","2","FLOAT","3","FLOAT","4","FLOAT3","5"]}
 {"type":"AmplifyShaderEditor.SimpleMultiplyOpNode, AmplifyShaderEditor","id":1028,"pos":[5440,512],"params":["Inherit","False","2","2","0","FLOAT","0","False","1","FLOAT","0","False","1","FLOAT","0"]}
+{"type":"AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor","id":1036,"pos":[3608,8],"params":["Inherit","False","SkyboxCloudColour","4","","770","e35217d2a61917344908c1fffe4ec998","0","2","38","FLOAT3","0,0,0","False","39","FLOAT3","0,0,0","False","4","FLOAT","525","FLOAT","515","FLOAT","516","FLOAT","401"]}
 {"type":"AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor","id":423,"pos":[2576,736],"params":["Float","False","False","-1","3","AmplifyShaderEditor.MaterialInspector","0","7","New Amplify Shader","0770190933193b94aaa3065e307002fa","True","ShadowCaster","0","2","ShadowCaster","0","False","True","0","1","False","","0","False","","0","1","False","","0","False","","True","0","False","","0","False","","False","False","False","False","False","False","False","False","False","True","0","False","","False","True","0","False","","False","True","True","True","True","True","0","False","","False","False","False","False","False","False","False","True","False","0","False","","255","False","","255","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","False","True","1","False","","False","False","False","True","1","RenderType=Opaque=RenderType","True","3","True","14","all","0","False","False","False","False","False","False","False","False","False","False","False","False","True","0","False","","False","False","False","False","False","False","False","False","False","False","False","False","False","True","1","False","","True","3","False","","False","False","True","1","LightMode=ShadowCaster","False","False","0","","0","0","Standard","0","False","0"]}
 {"type":"AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor","id":800,"pos":[6080,-328],"params":["Float","False","False","-1","3","AmplifyShaderEditor.MaterialInspector","0","7","New Amplify Shader","0770190933193b94aaa3065e307002fa","True","ExtraPrePass","0","0","ExtraPrePass","6","False","True","1","1","False","","0","False","","1","1","False","","0","False","","True","1","False","","1","False","","False","False","False","False","False","False","False","False","False","True","0","False","","False","True","0","False","","False","True","True","True","True","True","0","False","","False","False","False","False","False","False","False","True","False","0","False","","255","False","","255","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","False","True","1","False","","False","False","False","True","1","RenderType=Opaque=RenderType","True","3","True","14","all","0","False","True","1","1","False","","0","False","","0","1","False","","0","False","","False","False","False","False","False","False","False","False","False","False","False","False","True","0","False","","False","True","True","True","True","True","0","False","","False","False","False","False","False","False","False","True","False","0","False","","255","False","","255","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","False","True","1","False","","True","3","False","","True","True","0","False","","0","False","","False","True","1","LightMode=ForwardBase","False","False","0","","0","0","Standard","0","False","0"]}
 {"type":"AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor","id":422,"pos":[6128,-264],"params":["Float","False","True","-1","3","AmplifyShaderEditor.MaterialInspector","0","7","Skybox New","0770190933193b94aaa3065e307002fa","True","Unlit","0","1","Unlit","8","False","True","0","1","False","","0","False","","0","1","False","","0","False","","True","0","False","","0","False","","False","False","False","False","False","False","False","False","False","True","0","False","","False","True","0","False","","False","True","True","True","True","True","0","False","","False","False","False","False","False","False","False","True","False","0","False","","255","False","","255","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","False","True","1","False","","False","False","False","True","1","RenderType=Opaque=RenderType","True","3","True","14","all","0","False","True","1","1","False","","0","False","","1","1","False","","0","False","","True","1","False","","1","False","","False","False","False","False","False","False","False","False","False","False","False","True","0","False","","False","True","True","True","True","True","0","False","","False","False","False","False","False","False","False","True","False","0","False","","255","False","","255","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","False","True","1","False","","True","3","False","","True","True","0","False","","0","False","","False","True","1","LightMode=ForwardBase","False","False","2","Include","","False","","Native","False","0","0","","Include","","True","febec3adb872b90429418d9516a0f0f9","Custom","False","0","0","","","0","0","Standard","10","Surface","0","0","  Keep Alpha","0","0","  Blend","0","0","Alpha Clipping","0","0","  Use Shadow Threshold","0","0","Cast Shadows","1","0","Write Depth","0","0","  Conservative","0","0","Extra Pre Pass","0","0","Vertex Position","1","0","0","3","False","True","True","False","","False","0"]}
@@ -485,24 +489,24 @@ Version=19912
 {"wire":[965,1,967,5]}
 {"wire":[965,2,969,0]}
 {"wire":[970,0,964,4]}
-{"wire":[970,1,1025,401]}
+{"wire":[970,1,1036,401]}
 {"wire":[962,0,963,4]}
-{"wire":[962,1,1025,516]}
+{"wire":[962,1,1036,516]}
 {"wire":[969,0,967,4]}
-{"wire":[969,1,1025,515]}
-{"wire":[1024,0,1025,525]}
+{"wire":[969,1,1036,515]}
+{"wire":[1024,0,1036,525]}
 {"wire":[1024,1,1016,0]}
 {"wire":[1024,2,1014,0]}
-{"wire":[1025,38,529,0]}
-{"wire":[1025,39,528,0]}
 {"wire":[1016,0,1022,0]}
-{"wire":[1016,1,1025,525]}
-{"wire":[1022,0,1025,516]}
+{"wire":[1016,1,1036,525]}
+{"wire":[1022,0,1036,516]}
 {"wire":[1026,0,965,0]}
 {"wire":[1026,1,1027,5]}
 {"wire":[1026,2,1028,0]}
 {"wire":[1028,0,1024,0]}
 {"wire":[1028,1,1027,4]}
+{"wire":[1036,38,529,0]}
+{"wire":[1036,39,528,0]}
 {"wire":[422,0,828,0]}
 ASEEND*/
-//CHKSM=6FC67777B632655F07E951CE3BE9B17F918BE7BB
+//CHKSM=4FD6E7E782F0E1092FB66C9725A4CBAB4964CC94
