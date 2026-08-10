@@ -12,41 +12,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
   m_Name: SkyboxColour
   m_EditorClassIdentifier: 
-  m_functionInfo: "// Made with Amplify Shader Editor v1.9.9.9\n// Available at the
-    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19909\nNode;AmplifyShaderEditor.LerpOp,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;29;-1424,-1680;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;41;-1744,-1216;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LerpOp,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;3;-2736,-1840;Inherit;False;3;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.PowerNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;71;-3856,-1760;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.NegateNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;75;-4784,-1568;Inherit;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;76;-4448,-1696;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;77;-4288,-1696;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;68;-5040,-1568;Inherit;False;Light
-    Direction;3;1;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.DotProductOpNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;4;-4592,-1504;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;78;-3040,-1792;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.NegateNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;80;-3386.284,-1148.303;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.OneMinusNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;81;-3192.284,-1113.303;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.BreakToComponentsNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;99;-4560,-1152;Inherit;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.FunctionInput,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;98;-4979.005,-1107.858;Inherit;False;View
-    Direction;3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ColorNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;93;-2976,-2304;Inherit;False;Property;_SkyColour;Sky
-    Colour;0;1;[Header];Create;True;1;Sky;0;0;False;0;False;0.2117647,0.4313726,0.6705883,1;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;92;-3312,-2208;Inherit;False;Property;_SunnySkyColour;Sunny
-    Sky Colour;1;0;Create;True;1;Sky;0;0;False;0;False;0.5647059,0.8156863,0.8509804,1;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.ColorNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;97;-2128,-1504;Inherit;False;Property;_HorizonColour;Horizon
-    Colour;2;0;Create;True;1;Sky;0;0;False;0;False;1,0.6627451,0.3647059,1;1,1,1,1;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5\nNode;AmplifyShaderEditor.SaturateNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;74;-3584,-1776;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;91;-4080,-1504;Inherit;False;Property;_SunnySkyExponent;Sunny
-    Sky Exponent;3;0;Create;True;1;Sky;0;0;False;1;PowerSlider(3);False;1;0;0;300;0;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;95;-3360,-864;Inherit;False;Property;_HorizonHeight;Horizon
-    Height;4;0;Create;True;1;Sky;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.PowerNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;82;-2672,-1104;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;61;-3008,-992;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;96;-2887.865,-796.1697;Inherit;False;Property;_HorizonExponent;Horizon
-    Exponent;5;0;Create;True;1;Sky;0;0;False;1;PowerSlider(3);False;20;0;0;200;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SaturateNode,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;106;-2512,-1232;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput,
-    AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;0;-944,-1696;Inherit;False;True;-1;Output;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;29;0;3;0\nWireConnection;29;1;97;5\nWireConnection;29;2;41;0\nWireConnection;41;0;97;4\nWireConnection;41;1;106;0\nWireConnection;3;0;93;5\nWireConnection;3;1;92;5\nWireConnection;3;2;78;0\nWireConnection;71;0;77;0\nWireConnection;71;1;91;0\nWireConnection;75;0;68;0\nWireConnection;76;0;4;0\nWireConnection;77;0;76;0\nWireConnection;4;0;75;0\nWireConnection;4;1;98;0\nWireConnection;78;0;92;4\nWireConnection;78;1;74;0\nWireConnection;80;0;99;1\nWireConnection;81;0;80;0\nWireConnection;99;0;98;0\nWireConnection;74;0;71;0\nWireConnection;82;0;61;0\nWireConnection;82;1;96;0\nWireConnection;61;0;81;0\nWireConnection;61;1;95;0\nWireConnection;106;0;82;0\nWireConnection;0;0;29;0\nASEEND*/\n//CHKSM=7025D1F9D37D34164BC3A535F14581B4088F8079"
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.9.12\n// Available at
+    the Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19912\n{\"type\":\"AmplifyShaderEditor.LerpOp,
+    AmplifyShaderEditor\",\"id\":29,\"pos\":[-1424,-1680],\"params\":[\"Inherit\",\"False\",\"3\",\"0\",\"FLOAT3\",\"0,0,0\",\"False\",\"1\",\"FLOAT3\",\"0,0,0\",\"False\",\"2\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT3\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SimpleMultiplyOpNode,
+    AmplifyShaderEditor\",\"id\":41,\"pos\":[-1744,-1216],\"params\":[\"Inherit\",\"False\",\"2\",\"2\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.LerpOp,
+    AmplifyShaderEditor\",\"id\":3,\"pos\":[-2736,-1840],\"params\":[\"Inherit\",\"False\",\"3\",\"0\",\"FLOAT3\",\"0,0,0\",\"False\",\"1\",\"FLOAT3\",\"0,0,0\",\"False\",\"2\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT3\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.NegateNode,
+    AmplifyShaderEditor\",\"id\":75,\"pos\":[-4784,-1568],\"params\":[\"Inherit\",\"False\",\"1\",\"0\",\"FLOAT3\",\"0,0,0\",\"False\",\"1\",\"FLOAT3\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SimpleAddOpNode,
+    AmplifyShaderEditor\",\"id\":76,\"pos\":[-4448,-1696],\"params\":[\"Inherit\",\"False\",\"2\",\"2\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"1\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SimpleMultiplyOpNode,
+    AmplifyShaderEditor\",\"id\":77,\"pos\":[-4288,-1696],\"params\":[\"Inherit\",\"False\",\"2\",\"2\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0.5\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor\",\"id\":68,\"pos\":[-5040,-1568],\"params\":[\"Inherit\",\"False\",\"Light
+    Direction\",\"3\",\"1\",\"False\",\"1\",\"0\",\"FLOAT3\",\"0,0,0\",\"False\",\"1\",\"FLOAT3\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.DotProductOpNode,
+    AmplifyShaderEditor\",\"id\":4,\"pos\":[-4592,-1504],\"params\":[\"Inherit\",\"False\",\"2\",\"0\",\"FLOAT3\",\"0,0,0\",\"False\",\"1\",\"FLOAT3\",\"0,0,0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SimpleMultiplyOpNode,
+    AmplifyShaderEditor\",\"id\":78,\"pos\":[-3040,-1792],\"params\":[\"Inherit\",\"False\",\"2\",\"2\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.NegateNode,
+    AmplifyShaderEditor\",\"id\":80,\"pos\":[-3386.284,-1148.303],\"params\":[\"Inherit\",\"False\",\"1\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.OneMinusNode,
+    AmplifyShaderEditor\",\"id\":81,\"pos\":[-3192.284,-1113.303],\"params\":[\"Inherit\",\"False\",\"1\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.BreakToComponentsNode,
+    AmplifyShaderEditor\",\"id\":99,\"pos\":[-4560,-1152],\"params\":[\"Inherit\",\"False\",\"FLOAT3\",\"1\",\"0\",\"FLOAT3\",\"0,0,0\",\"False\",\"16\",\"FLOAT\",\"0\",\"FLOAT\",\"1\",\"FLOAT\",\"2\",\"FLOAT\",\"3\",\"FLOAT\",\"4\",\"FLOAT\",\"5\",\"FLOAT\",\"6\",\"FLOAT\",\"7\",\"FLOAT\",\"8\",\"FLOAT\",\"9\",\"FLOAT\",\"10\",\"FLOAT\",\"11\",\"FLOAT\",\"12\",\"FLOAT\",\"13\",\"FLOAT\",\"14\",\"FLOAT\",\"15\"]}\n{\"type\":\"AmplifyShaderEditor.FunctionInput,
+    AmplifyShaderEditor\",\"id\":98,\"pos\":[-4979.005,-1107.858],\"params\":[\"Inherit\",\"False\",\"View
+    Direction\",\"3\",\"0\",\"False\",\"1\",\"0\",\"FLOAT3\",\"0,0,0\",\"False\",\"1\",\"FLOAT3\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor\",\"id\":93,\"pos\":[-2976,-2304],\"params\":[\"Inherit\",\"False\",\"Property\",\"_SkyColour\",\"Sky
+    Colour\",\"0\",\"1\",\"[Header]\",\"Create\",\"True\",\"1\",\"Sky\",\"0\",\"0\",\"False\",\"0\",\"False\",\"Object\",\"-1\",\"\",\"0.2117647,0.4313726,0.6705883,1\",\"0,0,0,0\",\"True\",\"True\",\"0\",\"6\",\"COLOR\",\"0\",\"FLOAT\",\"1\",\"FLOAT\",\"2\",\"FLOAT\",\"3\",\"FLOAT\",\"4\",\"FLOAT3\",\"5\"]}\n{\"type\":\"AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor\",\"id\":92,\"pos\":[-3312,-2208],\"params\":[\"Inherit\",\"False\",\"Property\",\"_SunnySkyColour\",\"Sunny
+    Sky Colour\",\"1\",\"0\",\"Create\",\"True\",\"1\",\"Sky\",\"0\",\"0\",\"False\",\"0\",\"False\",\"Object\",\"-1\",\"\",\"0.5647059,0.8156863,0.8509804,1\",\"0,0,0,0\",\"True\",\"True\",\"0\",\"6\",\"COLOR\",\"0\",\"FLOAT\",\"1\",\"FLOAT\",\"2\",\"FLOAT\",\"3\",\"FLOAT\",\"4\",\"FLOAT3\",\"5\"]}\n{\"type\":\"AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor\",\"id\":97,\"pos\":[-2128,-1504],\"params\":[\"Inherit\",\"False\",\"Property\",\"_HorizonColour\",\"Horizon
+    Colour\",\"2\",\"0\",\"Create\",\"True\",\"1\",\"Sky\",\"0\",\"0\",\"False\",\"0\",\"False\",\"Object\",\"-1\",\"\",\"1,0.6627451,0.3647059,1\",\"1,1,1,1\",\"True\",\"True\",\"0\",\"6\",\"COLOR\",\"0\",\"FLOAT\",\"1\",\"FLOAT\",\"2\",\"FLOAT\",\"3\",\"FLOAT\",\"4\",\"FLOAT3\",\"5\"]}\n{\"type\":\"AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor\",\"id\":95,\"pos\":[-3360,-864],\"params\":[\"Inherit\",\"False\",\"Property\",\"_HorizonHeight\",\"Horizon
+    Height\",\"5\",\"0\",\"Create\",\"True\",\"1\",\"Sky\",\"0\",\"0\",\"False\",\"0\",\"False\",\"Object\",\"-1\",\"\",\"0\",\"0\",\"0\",\"1\",\"0\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.PowerNode,
+    AmplifyShaderEditor\",\"id\":82,\"pos\":[-2672,-1104],\"params\":[\"Inherit\",\"False\",\"False\",\"2\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"1\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SimpleAddOpNode,
+    AmplifyShaderEditor\",\"id\":61,\"pos\":[-3008,-992],\"params\":[\"Inherit\",\"False\",\"2\",\"2\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor\",\"id\":96,\"pos\":[-2887.865,-796.1697],\"params\":[\"Inherit\",\"False\",\"Property\",\"_HorizonExponent\",\"Horizon
+    Exponent\",\"6\",\"0\",\"Create\",\"True\",\"1\",\"Sky\",\"0\",\"0\",\"False\",\"1\",\"PowerSlider(3)\",\"False\",\"Object\",\"-1\",\"\",\"20\",\"0\",\"0\",\"200\",\"0\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SaturateNode,
+    AmplifyShaderEditor\",\"id\":106,\"pos\":[-2512,-1232],\"params\":[\"Inherit\",\"False\",\"1\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.PowerNode,
+    AmplifyShaderEditor\",\"id\":71,\"pos\":[-3856,-1760],\"params\":[\"Inherit\",\"False\",\"False\",\"2\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"1\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SaturateNode,
+    AmplifyShaderEditor\",\"id\":74,\"pos\":[-3584,-1776],\"params\":[\"Inherit\",\"False\",\"1\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor\",\"id\":91,\"pos\":[-4080,-1504],\"params\":[\"Inherit\",\"False\",\"Property\",\"_SunnySkyExponent\",\"Sunny
+    Sky Exponent\",\"3\",\"0\",\"Create\",\"True\",\"1\",\"Sky\",\"0\",\"0\",\"False\",\"1\",\"PowerSlider(3)\",\"False\",\"Object\",\"-1\",\"\",\"1\",\"0\",\"0\",\"300\",\"0\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor\",\"id\":109,\"pos\":[-3880,-1312],\"params\":[\"Inherit\",\"False\",\"Property\",\"_SunSizeExponent\",\"Sun
+    Size Exponent\",\"4\",\"0\",\"Create\",\"True\",\"1\",\"Sky\",\"0\",\"0\",\"False\",\"1\",\"PowerSlider(3)\",\"False\",\"Object\",\"-1\",\"\",\"1\",\"0\",\"0\",\"300\",\"0\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.ColorNode,
+    AmplifyShaderEditor\",\"id\":110,\"pos\":[-2016,-1984],\"params\":[\"Inherit\",\"False\",\"Property\",\"_SunColour\",\"Sun
+    Colour\",\"7\",\"1\",\"[HDR]\",\"Create\",\"True\",\"0\",\"0\",\"0\",\"False\",\"0\",\"False\",\"Object\",\"-1\",\"\",\"1,1,1,1\",\"0,0,0,0\",\"True\",\"True\",\"0\",\"6\",\"COLOR\",\"0\",\"FLOAT\",\"1\",\"FLOAT\",\"2\",\"FLOAT\",\"3\",\"FLOAT\",\"4\",\"FLOAT3\",\"5\"]}\n{\"type\":\"AmplifyShaderEditor.LerpOp,
+    AmplifyShaderEditor\",\"id\":112,\"pos\":[-1216,-1816],\"params\":[\"Inherit\",\"False\",\"3\",\"0\",\"FLOAT3\",\"0,0,0\",\"False\",\"1\",\"FLOAT3\",\"0,0,0\",\"False\",\"2\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT3\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SimpleMultiplyOpNode,
+    AmplifyShaderEditor\",\"id\":111,\"pos\":[-1760,-1824],\"params\":[\"Inherit\",\"False\",\"2\",\"2\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.PowerNode,
+    AmplifyShaderEditor\",\"id\":107,\"pos\":[-3600,-1376],\"params\":[\"Inherit\",\"False\",\"False\",\"2\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"1\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SaturateNode,
+    AmplifyShaderEditor\",\"id\":108,\"pos\":[-3328,-1392],\"params\":[\"Inherit\",\"False\",\"1\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor\",\"id\":116,\"pos\":[-3496,-1488],\"params\":[\"Inherit\",\"False\",\"Property\",\"_SunSmoothness\",\"Sun
+    Smoothness\",\"9\",\"0\",\"Create\",\"True\",\"0\",\"0\",\"0\",\"False\",\"0\",\"False\",\"Object\",\"-1\",\"\",\"0\",\"0\",\"0\",\"1\",\"0\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.OneMinusNode,
+    AmplifyShaderEditor\",\"id\":118,\"pos\":[-3168,-1584],\"params\":[\"Inherit\",\"False\",\"1\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SimpleMultiplyOpNode,
+    AmplifyShaderEditor\",\"id\":120,\"pos\":[-3352,-1600],\"params\":[\"Inherit\",\"False\",\"2\",\"2\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0.01\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.RangedFloatNode,
+    AmplifyShaderEditor\",\"id\":114,\"pos\":[-3680,-1576],\"params\":[\"Inherit\",\"False\",\"Property\",\"_SunSize\",\"Sun
+    Size\",\"8\",\"0\",\"Create\",\"True\",\"0\",\"0\",\"0\",\"False\",\"0\",\"False\",\"Object\",\"-1\",\"\",\"0\",\"0\",\"0\",\"1\",\"0\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.FunctionNode,
+    AmplifyShaderEditor\",\"id\":115,\"pos\":[-2976,-1616],\"params\":[\"Inherit\",\"False\",\"MaskRemap\",\"-1\",\"\",\"1\",\"173036804ac0c37418ff32bbae959f1c\",\"0\",\"3\",\"1\",\"FLOAT\",\"0\",\"False\",\"2\",\"FLOAT\",\"0\",\"False\",\"5\",\"FLOAT\",\"1\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.SmoothstepOpNode,
+    AmplifyShaderEditor\",\"id\":121,\"pos\":[-2984,-1432],\"params\":[\"Inherit\",\"False\",\"3\",\"0\",\"FLOAT\",\"0\",\"False\",\"1\",\"FLOAT\",\"0\",\"False\",\"2\",\"FLOAT\",\"1\",\"False\",\"1\",\"FLOAT\",\"0\"]}\n{\"type\":\"AmplifyShaderEditor.FunctionOutput,
+    AmplifyShaderEditor\",\"id\":0,\"pos\":[-944,-1696],\"params\":[\"Inherit\",\"False\",\"True\",\"-1\",\"Output\",\"0\",\"False\",\"1\",\"0\",\"FLOAT3\",\"0,0,0\",\"False\",\"1\",\"FLOAT3\",\"0\"]}\n{\"wire\":[29,0,3,0]}\n{\"wire\":[29,1,97,5]}\n{\"wire\":[29,2,41,0]}\n{\"wire\":[41,0,97,4]}\n{\"wire\":[41,1,106,0]}\n{\"wire\":[3,0,93,5]}\n{\"wire\":[3,1,92,5]}\n{\"wire\":[3,2,78,0]}\n{\"wire\":[75,0,68,0]}\n{\"wire\":[76,0,4,0]}\n{\"wire\":[77,0,76,0]}\n{\"wire\":[4,0,75,0]}\n{\"wire\":[4,1,98,0]}\n{\"wire\":[78,0,92,4]}\n{\"wire\":[78,1,74,0]}\n{\"wire\":[80,0,99,1]}\n{\"wire\":[81,0,80,0]}\n{\"wire\":[99,0,98,0]}\n{\"wire\":[82,0,61,0]}\n{\"wire\":[82,1,96,0]}\n{\"wire\":[61,0,81,0]}\n{\"wire\":[61,1,95,0]}\n{\"wire\":[106,0,82,0]}\n{\"wire\":[71,0,77,0]}\n{\"wire\":[71,1,91,0]}\n{\"wire\":[74,0,71,0]}\n{\"wire\":[112,0,29,0]}\n{\"wire\":[112,1,110,5]}\n{\"wire\":[112,2,111,0]}\n{\"wire\":[111,0,110,4]}\n{\"wire\":[111,1,121,0]}\n{\"wire\":[107,0,77,0]}\n{\"wire\":[107,1,109,0]}\n{\"wire\":[108,0,107,0]}\n{\"wire\":[118,0,120,0]}\n{\"wire\":[120,0,114,0]}\n{\"wire\":[115,2,118,0]}\n{\"wire\":[115,5,116,0]}\n{\"wire\":[121,0,77,0]}\n{\"wire\":[121,1,118,0]}\n{\"wire\":[0,0,112,0]}\nASEEND*/\n//CHKSM=8FFC23157ABA0B662D301154CDDFA29441713561"
   m_functionName: 
   m_description: 
   m_additionalIncludes:
@@ -67,6 +83,7 @@ MonoBehaviour:
     m_nativeDirectivesIndex: -1
     m_nativeDirectivesFoldout: 0
     m_directivesSaveItems: []
+    m_versionMaxExclusive: 1
   m_nodeCategory: 3
   m_headerStyle: 0
   m_headerColor: {r: 1, g: 0.4, b: 0, a: 1}

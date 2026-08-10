@@ -142,17 +142,19 @@ Material:
     - _CloudSharpness: 1
     - _CloudSmoothness: 0
     - _Cull: 2
-    - _Cutoff: 0.385
+    - _Cutoff: 0.523
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _EdgeCutoff: 0.502
+    - _EdgeCutoff: 0.468
+    - _EdgeIntensity: 3.11
     - _EdgeSize: 0.992
-    - _EdgeSmoothness: 0.128
+    - _EdgeSmoothness: 0.189
     - _EnvironmentReflections: 1
     - _FarClip: 2000
-    - _Float0: 3
+    - _Float0: 90
+    - _Float1: 1
     - _Gain: 0.5
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -161,15 +163,18 @@ Material:
     - _GradientStrength: 1
     - _H: 1
     - _HorizonCoverage: 0.16
-    - _HorizonExponent: 3
+    - _HorizonExponent: 7
     - _HorizonFadeExponent: 200
     - _HorizonFadeHeight: 0
     - _HorizonHeight: 0
     - _InteriorCoverage: 0.195
-    - _InteriorCutoff: 0.509
+    - _InteriorCutoff: 0.482
     - _InteriorIntensity: 0
     - _InteriorLighting: 0.256
     - _InteriorMultiplier: 1
+    - _InteriorPierceBlocking: 0.5
+    - _InteriorPierceCutoff: 0.837
+    - _InteriorPierceSmoothness: 0.894
     - _InteriorSharpness: 3.5
     - _InteriorSmoothness: 0.21
     - _Metallic: 0
@@ -177,13 +182,18 @@ Material:
     - _Octaves: 4
     - _Octaves1: 10
     - _Parallax: 0.005
+    - _PierceCutoff: 0.837
+    - _PierceSmoothness: 1
+    - _PierceSunMax: 1
+    - _PierceSunMin: 0
+    - _PierceSunSize: 0.105
     - _PlaneHeight: 0.72
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ScrollDirection: 0
-    - _ScrollSpeed: 0.1
-    - _Smoothness: 0.21
+    - _ScrollSpeed: 0
+    - _Smoothness: 0.051
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SphereMultiplier: 0
@@ -191,7 +201,12 @@ Material:
     - _SrcBlendAlpha: 1
     - _Strngth: 14.42
     - _SunOffsetScale: 0
-    - _SunnySkyExponent: 67
+    - _SunPierceExponent: 88
+    - _SunSize: 0.141
+    - _SunSizeExponent: 93
+    - _SunSmoothness: 0.167
+    - _SunZ: 1
+    - _SunnySkyExponent: 51
     - _Surface: 0
     - _Test: 0
     - _TestAmplitude: 0.37
@@ -215,7 +230,7 @@ Material:
     - _test: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _CloudColour: {r: 0.3656905, g: 0.49722648, b: 0.60754704, a: 1}
+    - _CloudColour: {r: 0.38823384, g: 0.45084155, b: 0.490196, a: 1}
     - _CloudDarkColour: {r: 0.9607843, g: 0.72156864, b: 0, a: 1}
     - _CloudHorizonFade: {r: 0, g: 0.33549225, b: 0, a: 0}
     - _CloudInterior: {r: 0.5816493, g: 0.92296016, b: 0, a: 0}
@@ -224,21 +239,23 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 1, g: 0.84313726, b: 0.63529414, a: 1}
     - _DarkCloudColour: {r: 0.71117556, g: 0.71117556, b: 0.71117556, a: 1}
-    - _EdgeColour: {r: 1, g: 0.57641834, b: 0.20609587, a: 1}
+    - _EdgeColour: {r: 11.313708, g: 0.96493435, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HorizonColour: {r: 1, g: 0.58040816, b: 0, a: 0.9019608}
     - _HorizonCoverage: {r: 0.7419355, g: 1, b: 0, a: 0}
     - _HorizonShape: {r: 0.46505418, g: 0.9166664, b: 0, a: 0}
     - _HorizonShape1: {r: 0.8064522, g: 0.9892473, b: 0, a: 0}
-    - _InteriorColour: {r: 0, g: 0, b: 0, a: 0.13333334}
+    - _InteriorColour: {r: 0.10170033, g: 0.095940225, b: 0.26414946, a: 0.45490196}
     - _InteriorShape: {r: 0.5156951, g: 0.80179715, b: 0, a: 0}
     - _NoiseFrequencies: {r: 1.07, g: 1.7, b: 4, a: 0}
+    - _PierceColour: {r: 4.541207, g: 0.09375719, b: 0, a: 1}
     - _ScrollSpeed: {r: 0.1, g: 0.05, b: -0.2, a: -0.1}
     - _SkyColour: {r: 0.39341006, g: 0.6503525, b: 0.8417997, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SunColour: {r: 188.0174, g: 30.840347, b: 9.75562, a: 1}
     - _SunOffset: {r: 0.09, g: 0, b: 0.01, a: 0}
     - _SunnyCloudColour: {r: 0.3647059, g: 0.49803922, b: 0.60784316, a: 1}
-    - _SunnySkyColour: {r: 0.40328878, g: 0.70262396, b: 0.78867924, a: 1}
+    - _SunnySkyColour: {r: 0.57254905, g: 0.94534016, b: 1, a: 1}
     - _SunnySkyShape: {r: 0, g: 0.25, b: 0, a: 0}
     - _Vector0: {r: 0.2942809, g: 0.7601965, b: 0, a: 0}
   m_BuildTextureStacks: []
