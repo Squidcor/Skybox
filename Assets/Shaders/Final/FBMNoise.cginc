@@ -1,7 +1,6 @@
 float2 hash(in float2 uv)
 {
     uv = float2(dot(uv, float2(127.1, 311.7)), dot(uv, float2(269.5, 183.3)));
- 
     return -1.0 + 2.0 * frac(sin(uv) * 43758.5453123);
 }
 
@@ -32,19 +31,36 @@ float3 noised(in float2 uv)
 
 
 
-float4 fbmd(in float2 uv, in float gain, in float lacunarity, in int octaves)
+float4 fbmd(in float2 uv, in float gain, in float lacunarity, in int octaves, in float distortionAmount, in float distortionExponent)
 {
 
-    const float2x2 m = float2x2(0.8, -0.6, 0.6, 0.8);
-    
     float value = 0.0;
     float amplitude = 1.0;
     float totalAmplitude = 0;
+
     float2 gradient = float2(0.0, 0.0);
+    float offset = 0;
+    
+    
+    //
+    
+    float maxDistortion = 5.0;
+    float angle = 180;
+    float2 offsetDirection = normalize(float2(1.0, -1.0));
     
     for (int i = 0; i < octaves; i++)
     {
-        float3 n = noised(uv);
+      //  float angle = (120.0 * i) * 0.0174532925;
+        
+        offsetDirection *= offsetDirection;
+
+        float distortion = pow((float) i / octaves, distortionExponent) * distortionAmount;
+       // float offset = float2(cos(angle), sin(angle)) * distortion;
+        
+        float offset = offsetDirection * distortion;
+        
+
+        float3 n = noised(uv + offset);
         
         value += amplitude * n.x; // accumulate values
         gradient += n.yz * amplitude; // accumulate derivatives

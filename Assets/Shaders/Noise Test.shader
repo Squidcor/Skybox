@@ -4,11 +4,8 @@ Shader "Noise Test"
 {
 	Properties
 	{
-		[IntRange]_Octaves( "Octaves", Range( 1, 6 ) ) = 5
-		_UVScale( "UV Scale", Float ) = 0
 		_Cutoff( "Cutoff", Range( 0, 1 ) ) = 0
 		_Smoothness( "Smoothness", Range( 0, 1 ) ) = 0
-		_GradientStrength( "Gradient Strength", Range( 0, 5 ) ) = 0
 		_GradientEdgeSmoothness( "Gradient Edge Smoothness", Range( 0, 1 ) ) = 0.1
 
 
@@ -305,7 +302,6 @@ Shader "Noise Test"
 				#define ENABLE_TERRAIN_PERPIXEL_NORMAL
 			#endif
 
-			#define ASE_NEEDS_TEXTURE_COORDINATES0
 			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
@@ -354,7 +350,7 @@ Shader "Noise Test"
 				#if defined(USE_APV_PROBE_OCCLUSION)
 					float4 probeOcclusion : TEXCOORD6;
 				#endif
-				float4 ase_texcoord7 : TEXCOORD7;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -362,9 +358,6 @@ Shader "Noise Test"
 			CBUFFER_START(UnityPerMaterial)
 			float _GradientEdgeSmoothness;
 			float _Smoothness;
-			float _UVScale;
-			int _Octaves;
-			float _GradientStrength;
 			float _AlphaClip;
 			float _Cutoff;
 			#ifdef ASE_TRANSMISSION
@@ -399,12 +392,7 @@ Shader "Noise Test"
 
 			
 
-			float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
-			{
-				return fbmd(UV,Gain,Lacunarity,Octaves);
-			}
 			
-
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -412,10 +400,7 @@ Shader "Noise Test"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-				output.ase_texcoord7.xy = input.texcoord.xy;
 				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				output.ase_texcoord7.zw = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
@@ -627,22 +612,14 @@ Shader "Noise Test"
 				#endif
 
 				float temp_output_2_0_g17 = _Cutoff;
-				float2 temp_cast_0 = (_UVScale).xx;
-				float2 texCoord16 = input.ase_texcoord7.xy * temp_cast_0 + float2( 0,0 );
-				float2 UV81 = texCoord16;
-				int Octaves81 = _Octaves;
-				float Gain81 = 0.5;
-				float Lacunarity81 = 2.0;
-				float GradientStrength81 = _GradientStrength;
-				float4 localFBMWithGradient81 = FBMWithGradient( UV81 , Octaves81 , Gain81 , Lacunarity81 , GradientStrength81 );
-				float smoothstepResult12_g17 = smoothstep( temp_output_2_0_g17 , min( ( temp_output_2_0_g17 + _Smoothness ), 1.0 ) , (localFBMWithGradient81).x);
+				float smoothstepResult12_g17 = smoothstep( temp_output_2_0_g17 , min( ( temp_output_2_0_g17 + _Smoothness ), 1.0 ) , (float4( 0,0,0,0 )).x);
 				float smoothstepResult114 = smoothstep( 0.0 , _GradientEdgeSmoothness , saturate( smoothstepResult12_g17 ));
-				float3 temp_cast_1 = (smoothstepResult114).xxx;
+				float3 temp_cast_0 = (smoothstepResult114).xxx;
 				
-				float3 lerpResult78 = lerp( float3( 0,0,1 ) , (localFBMWithGradient81).yzw , smoothstepResult114);
+				float3 lerpResult78 = lerp( float3( 0,0,1 ) , (float4( 0,0,0,0 )).yzw , smoothstepResult114);
 				
 
-				float3 BaseColor = temp_cast_1;
+				float3 BaseColor = temp_cast_0;
 				float3 Normal = lerpResult78;
 				float3 Specular = 0.5;
 				float Metallic = 0;
@@ -999,9 +976,6 @@ Shader "Noise Test"
 			CBUFFER_START(UnityPerMaterial)
 			float _GradientEdgeSmoothness;
 			float _Smoothness;
-			float _UVScale;
-			int _Octaves;
-			float _GradientStrength;
 			float _AlphaClip;
 			float _Cutoff;
 			#ifdef ASE_TRANSMISSION
@@ -1307,9 +1281,6 @@ Shader "Noise Test"
 			CBUFFER_START(UnityPerMaterial)
 			float _GradientEdgeSmoothness;
 			float _Smoothness;
-			float _UVScale;
-			int _Octaves;
-			float _GradientStrength;
 			float _AlphaClip;
 			float _Cutoff;
 			#ifdef ASE_TRANSMISSION
@@ -1556,7 +1527,6 @@ Shader "Noise Test"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/MetaInput.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#define ASE_NEEDS_TEXTURE_COORDINATES0
 			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
@@ -1580,7 +1550,7 @@ Shader "Noise Test"
 					float4 VizUV : TEXCOORD1;
 					float4 LightCoord : TEXCOORD2;
 				#endif
-				float4 ase_texcoord3 : TEXCOORD3;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -1588,9 +1558,6 @@ Shader "Noise Test"
 			CBUFFER_START(UnityPerMaterial)
 			float _GradientEdgeSmoothness;
 			float _Smoothness;
-			float _UVScale;
-			int _Octaves;
-			float _GradientStrength;
 			float _AlphaClip;
 			float _Cutoff;
 			#ifdef ASE_TRANSMISSION
@@ -1625,12 +1592,7 @@ Shader "Noise Test"
 
 			
 
-			float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
-			{
-				return fbmd(UV,Gain,Lacunarity,Octaves);
-			}
 			
-
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -1638,10 +1600,7 @@ Shader "Noise Test"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-				output.ase_texcoord3.xy = input.texcoord.xy;
 				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				output.ase_texcoord3.zw = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
@@ -1780,20 +1739,12 @@ Shader "Noise Test"
 				float4 ShadowCoord = shadowCoord;
 
 				float temp_output_2_0_g17 = _Cutoff;
-				float2 temp_cast_0 = (_UVScale).xx;
-				float2 texCoord16 = input.ase_texcoord3.xy * temp_cast_0 + float2( 0,0 );
-				float2 UV81 = texCoord16;
-				int Octaves81 = _Octaves;
-				float Gain81 = 0.5;
-				float Lacunarity81 = 2.0;
-				float GradientStrength81 = _GradientStrength;
-				float4 localFBMWithGradient81 = FBMWithGradient( UV81 , Octaves81 , Gain81 , Lacunarity81 , GradientStrength81 );
-				float smoothstepResult12_g17 = smoothstep( temp_output_2_0_g17 , min( ( temp_output_2_0_g17 + _Smoothness ), 1.0 ) , (localFBMWithGradient81).x);
+				float smoothstepResult12_g17 = smoothstep( temp_output_2_0_g17 , min( ( temp_output_2_0_g17 + _Smoothness ), 1.0 ) , (float4( 0,0,0,0 )).x);
 				float smoothstepResult114 = smoothstep( 0.0 , _GradientEdgeSmoothness , saturate( smoothstepResult12_g17 ));
-				float3 temp_cast_1 = (smoothstepResult114).xxx;
+				float3 temp_cast_0 = (smoothstepResult114).xxx;
 				
 
-				float3 BaseColor = temp_cast_1;
+				float3 BaseColor = temp_cast_0;
 				float3 Emission = 0;
 				float Alpha = 1;
 				#if defined( _ALPHATEST_ON )
@@ -1866,7 +1817,6 @@ Shader "Noise Test"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#define ASE_NEEDS_TEXTURE_COORDINATES0
 			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
@@ -1875,7 +1825,7 @@ Shader "Noise Test"
 				float4 positionOS : POSITION;
 				half3 normalOS : NORMAL;
 				half4 tangentOS : TANGENT;
-				float4 ase_texcoord : TEXCOORD0;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1883,7 +1833,7 @@ Shader "Noise Test"
 			{
 				float4 positionCS : SV_POSITION;
 				float3 positionWS : TEXCOORD0;
-				float4 ase_texcoord1 : TEXCOORD1;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -1891,9 +1841,6 @@ Shader "Noise Test"
 			CBUFFER_START(UnityPerMaterial)
 			float _GradientEdgeSmoothness;
 			float _Smoothness;
-			float _UVScale;
-			int _Octaves;
-			float _GradientStrength;
 			float _AlphaClip;
 			float _Cutoff;
 			#ifdef ASE_TRANSMISSION
@@ -1928,12 +1875,7 @@ Shader "Noise Test"
 
 			
 
-			float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
-			{
-				return fbmd(UV,Gain,Lacunarity,Octaves);
-			}
 			
-
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -1941,10 +1883,7 @@ Shader "Noise Test"
 				UNITY_TRANSFER_INSTANCE_ID( input, output );
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( output );
 
-				output.ase_texcoord1.xy = input.ase_texcoord.xy;
 				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				output.ase_texcoord1.zw = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
@@ -1976,8 +1915,7 @@ Shader "Noise Test"
 				float4 positionOS : INTERNALTESSPOS;
 				half3 normalOS : NORMAL;
 				half4 tangentOS : TANGENT;
-				float4 ase_texcoord : TEXCOORD0;
-
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1995,7 +1933,7 @@ Shader "Noise Test"
 				output.positionOS = input.positionOS;
 				output.normalOS = input.normalOS;
 				output.tangentOS = input.tangentOS;
-				output.ase_texcoord = input.ase_texcoord;
+				
 				return output;
 			}
 
@@ -2035,7 +1973,7 @@ Shader "Noise Test"
 				output.positionOS = patch[0].positionOS * bary.x + patch[1].positionOS * bary.y + patch[2].positionOS * bary.z;
 				output.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
 				output.tangentOS = patch[0].tangentOS * bary.x + patch[1].tangentOS * bary.y + patch[2].tangentOS * bary.z;
-				output.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -2069,20 +2007,12 @@ Shader "Noise Test"
 				float4 ShadowCoord = shadowCoord;
 
 				float temp_output_2_0_g17 = _Cutoff;
-				float2 temp_cast_0 = (_UVScale).xx;
-				float2 texCoord16 = input.ase_texcoord1.xy * temp_cast_0 + float2( 0,0 );
-				float2 UV81 = texCoord16;
-				int Octaves81 = _Octaves;
-				float Gain81 = 0.5;
-				float Lacunarity81 = 2.0;
-				float GradientStrength81 = _GradientStrength;
-				float4 localFBMWithGradient81 = FBMWithGradient( UV81 , Octaves81 , Gain81 , Lacunarity81 , GradientStrength81 );
-				float smoothstepResult12_g17 = smoothstep( temp_output_2_0_g17 , min( ( temp_output_2_0_g17 + _Smoothness ), 1.0 ) , (localFBMWithGradient81).x);
+				float smoothstepResult12_g17 = smoothstep( temp_output_2_0_g17 , min( ( temp_output_2_0_g17 + _Smoothness ), 1.0 ) , (float4( 0,0,0,0 )).x);
 				float smoothstepResult114 = smoothstep( 0.0 , _GradientEdgeSmoothness , saturate( smoothstepResult12_g17 ));
-				float3 temp_cast_1 = (smoothstepResult114).xxx;
+				float3 temp_cast_0 = (smoothstepResult114).xxx;
 				
 
-				float3 BaseColor = temp_cast_1;
+				float3 BaseColor = temp_cast_0;
 				float Alpha = 1;
 				#if defined( _ALPHATEST_ON )
 					float AlphaClipThreshold = _Cutoff;
@@ -2160,7 +2090,6 @@ Shader "Noise Test"
 				#define ENABLE_TERRAIN_PERPIXEL_NORMAL
 			#endif
 
-			#define ASE_NEEDS_TEXTURE_COORDINATES0
 			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
@@ -2188,7 +2117,7 @@ Shader "Noise Test"
 				float3 positionWS : TEXCOORD0;
 				half3 normalWS : TEXCOORD1;
 				float4 tangentWS : TEXCOORD2; // holds terrainUV ifdef ENABLE_TERRAIN_PERPIXEL_NORMAL
-				float4 ase_texcoord3 : TEXCOORD3;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -2196,9 +2125,6 @@ Shader "Noise Test"
 			CBUFFER_START(UnityPerMaterial)
 			float _GradientEdgeSmoothness;
 			float _Smoothness;
-			float _UVScale;
-			int _Octaves;
-			float _GradientStrength;
 			float _AlphaClip;
 			float _Cutoff;
 			#ifdef ASE_TRANSMISSION
@@ -2233,12 +2159,7 @@ Shader "Noise Test"
 
 			
 
-			float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
-			{
-				return fbmd(UV,Gain,Lacunarity,Octaves);
-			}
 			
-
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -2246,10 +2167,7 @@ Shader "Noise Test"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-				output.ase_texcoord3.xy = input.texcoord.xy;
 				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				output.ase_texcoord3.zw = 0;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
 				#else
@@ -2410,18 +2328,10 @@ Shader "Noise Test"
 					BitangentWS = cross(NormalWS, -TangentWS);
 				#endif
 
-				float2 temp_cast_0 = (_UVScale).xx;
-				float2 texCoord16 = input.ase_texcoord3.xy * temp_cast_0 + float2( 0,0 );
-				float2 UV81 = texCoord16;
-				int Octaves81 = _Octaves;
-				float Gain81 = 0.5;
-				float Lacunarity81 = 2.0;
-				float GradientStrength81 = _GradientStrength;
-				float4 localFBMWithGradient81 = FBMWithGradient( UV81 , Octaves81 , Gain81 , Lacunarity81 , GradientStrength81 );
 				float temp_output_2_0_g17 = _Cutoff;
-				float smoothstepResult12_g17 = smoothstep( temp_output_2_0_g17 , min( ( temp_output_2_0_g17 + _Smoothness ), 1.0 ) , (localFBMWithGradient81).x);
+				float smoothstepResult12_g17 = smoothstep( temp_output_2_0_g17 , min( ( temp_output_2_0_g17 + _Smoothness ), 1.0 ) , (float4( 0,0,0,0 )).x);
 				float smoothstepResult114 = smoothstep( 0.0 , _GradientEdgeSmoothness , saturate( smoothstepResult12_g17 ));
-				float3 lerpResult78 = lerp( float3( 0,0,1 ) , (localFBMWithGradient81).yzw , smoothstepResult114);
+				float3 lerpResult78 = lerp( float3( 0,0,1 ) , (float4( 0,0,0,0 )).yzw , smoothstepResult114);
 				
 
 				float3 Normal = lerpResult78;
@@ -2586,7 +2496,6 @@ Shader "Noise Test"
 				#define ENABLE_TERRAIN_PERPIXEL_NORMAL
 			#endif
 
-			#define ASE_NEEDS_TEXTURE_COORDINATES0
 			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
@@ -2630,7 +2539,7 @@ Shader "Noise Test"
 				#if defined(USE_APV_PROBE_OCCLUSION)
 					float4 probeOcclusion : TEXCOORD6;
 				#endif
-				float4 ase_texcoord7 : TEXCOORD7;
+				
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
@@ -2638,9 +2547,6 @@ Shader "Noise Test"
 			CBUFFER_START(UnityPerMaterial)
 			float _GradientEdgeSmoothness;
 			float _Smoothness;
-			float _UVScale;
-			int _Octaves;
-			float _GradientStrength;
 			float _AlphaClip;
 			float _Cutoff;
 			#ifdef ASE_TRANSMISSION
@@ -2681,12 +2587,7 @@ Shader "Noise Test"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl"
 			#endif
 
-			float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
-			{
-				return fbmd(UV,Gain,Lacunarity,Octaves);
-			}
 			
-
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -2694,10 +2595,7 @@ Shader "Noise Test"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-				output.ase_texcoord7.xy = input.texcoord.xy;
 				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				output.ase_texcoord7.zw = 0;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
 				#else
@@ -2900,22 +2798,14 @@ Shader "Noise Test"
 				#endif
 
 				float temp_output_2_0_g17 = _Cutoff;
-				float2 temp_cast_0 = (_UVScale).xx;
-				float2 texCoord16 = input.ase_texcoord7.xy * temp_cast_0 + float2( 0,0 );
-				float2 UV81 = texCoord16;
-				int Octaves81 = _Octaves;
-				float Gain81 = 0.5;
-				float Lacunarity81 = 2.0;
-				float GradientStrength81 = _GradientStrength;
-				float4 localFBMWithGradient81 = FBMWithGradient( UV81 , Octaves81 , Gain81 , Lacunarity81 , GradientStrength81 );
-				float smoothstepResult12_g17 = smoothstep( temp_output_2_0_g17 , min( ( temp_output_2_0_g17 + _Smoothness ), 1.0 ) , (localFBMWithGradient81).x);
+				float smoothstepResult12_g17 = smoothstep( temp_output_2_0_g17 , min( ( temp_output_2_0_g17 + _Smoothness ), 1.0 ) , (float4( 0,0,0,0 )).x);
 				float smoothstepResult114 = smoothstep( 0.0 , _GradientEdgeSmoothness , saturate( smoothstepResult12_g17 ));
-				float3 temp_cast_1 = (smoothstepResult114).xxx;
+				float3 temp_cast_0 = (smoothstepResult114).xxx;
 				
-				float3 lerpResult78 = lerp( float3( 0,0,1 ) , (localFBMWithGradient81).yzw , smoothstepResult114);
+				float3 lerpResult78 = lerp( float3( 0,0,1 ) , (float4( 0,0,0,0 )).yzw , smoothstepResult114);
 				
 
-				float3 BaseColor = temp_cast_1;
+				float3 BaseColor = temp_cast_0;
 				float3 Normal = lerpResult78;
 				float3 Specular = 0.5;
 				float Metallic = 0;
@@ -3147,9 +3037,6 @@ Shader "Noise Test"
 			CBUFFER_START(UnityPerMaterial)
 			float _GradientEdgeSmoothness;
 			float _Smoothness;
-			float _UVScale;
-			int _Octaves;
-			float _GradientStrength;
 			float _AlphaClip;
 			float _Cutoff;
 			#ifdef ASE_TRANSMISSION
@@ -3427,9 +3314,6 @@ Shader "Noise Test"
 			CBUFFER_START(UnityPerMaterial)
 			float _GradientEdgeSmoothness;
 			float _Smoothness;
-			float _UVScale;
-			int _Octaves;
-			float _GradientStrength;
 			float _AlphaClip;
 			float _Cutoff;
 			#ifdef ASE_TRANSMISSION
@@ -3721,9 +3605,6 @@ Shader "Noise Test"
 			CBUFFER_START(UnityPerMaterial)
 			float _GradientEdgeSmoothness;
 			float _Smoothness;
-			float _UVScale;
-			int _Octaves;
-			float _GradientStrength;
 			float _AlphaClip;
 			float _Cutoff;
 			#ifdef ASE_TRANSMISSION
@@ -3942,8 +3823,6 @@ Version=19912
 {"wire":[36,1,116,0]}
 {"wire":[36,2,18,0]}
 {"wire":[36,5,22,0]}
-{"wire":[116,0,81,0]}
-{"wire":[113,0,81,0]}
 {"wire":[80,0,36,0]}
 {"wire":[114,0,80,0]}
 {"wire":[114,2,115,0]}
@@ -3955,4 +3834,4 @@ Version=19912
 {"wire":[98,0,114,0]}
 {"wire":[98,1,78,0]}
 ASEEND*/
-//CHKSM=5D49166C53DF4136B28FEA0F15429D8EBB8416C0
+//CHKSM=873B988D930A00011219F48E16ACA5B8DF5E8982
