@@ -42,14 +42,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _Boost: 1
-    - _Cutoff: 0.835
+    - _Cutoff: 0.525
     - _EnvironmentReflections: 0
     - _Exponent: 5.18
-    - _Float0: 0.028
+    - _Float0: 0
     - _GradientEdgeSmoothness: 0.268
     - _GradientOffset: 0.075
     - _GradientStrength: 1.34
-    - _LightOffsetDistance: 0.066
+    - _LightOffsetDistance: 0.121
     - _Min: 0.804
     - _Multiplier: 0.957
     - _Octaves: 5
@@ -58,17 +58,18 @@ Material:
     - _ReceiveShadows: 0
     - _ScreenSpaceReflections: 0
     - _ScreenSpaceReflectionsContributeTransparent: 0
-    - _Smoothness: 0.274
+    - _ScrollDirection: 153
+    - _Smoothness: 0.109
     - _SpecularHighlights: 1
     - _UVOffset: 0.1
-    - _UVScale: 3.83
+    - _UVScale: 2.92
     - _Width: 0.16
     - __dirty: 0
     - _offset: 0
     m_Colors:
     - _Light: {r: 1, g: 0, b: 0, a: 0}
     - _LightDirection: {r: 0, g: 0, b: 0, a: 0}
-    - _LightOffsetDirection: {r: -0.34, g: 1.78, b: 0, a: 0}
+    - _LightOffsetDirection: {r: -0.12, g: 0, b: 0, a: 0}
     - _Vector0: {r: 0.25287682, g: 0.76985687, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
