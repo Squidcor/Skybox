@@ -79,7 +79,7 @@ Shader "Fake Sky Lighting"
 				#include "UnityCG.cginc"
 
 				#include "Lighting.cginc"
-				#include "Assets/Shaders/FBMNoise.cginc"
+				#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 				#if defined(ASE_WRITE_DEPTH_CONSERVATIVE) && (SHADER_TARGET >= 45)
@@ -254,7 +254,7 @@ Shader "Fake Sky Lighting"
 				#endif
 				#include "UnityCG.cginc"
 
-				#include "Assets/Shaders/FBMNoise.cginc"
+				#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 				#if defined(ASE_WRITE_DEPTH_CONSERVATIVE) && (SHADER_TARGET >= 45)
@@ -447,4 +447,4 @@ Version=19912
 {"wire":[78,1,48,0]}
 {"wire":[39,0,58,0]}
 ASEEND*/
-//CHKSM=ECD009F0D32850570AA82ADB32DAF8BEC54B83EB
+//CHKSM=996944D889F5D25FFBA8F88A4F7453D5C2DE4157

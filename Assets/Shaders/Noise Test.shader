@@ -1,4 +1,4 @@
-// Made with Amplify Shader Editor v1.9.9.11
+// Made with Amplify Shader Editor v1.9.9.12
 // Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "Noise Test"
 {
@@ -213,7 +213,7 @@ Shader "Noise Test"
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
 			#define _NORMALMAP 1
-			#define ASE_VERSION 19911
+			#define ASE_VERSION 19912
 			#define ASE_SRP_VERSION 170300
 
 
@@ -306,7 +306,7 @@ Shader "Noise Test"
 			#endif
 
 			#define ASE_NEEDS_TEXTURE_COORDINATES0
-			#include "Assets/Shaders/FBMNoise.cginc"
+			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 			#if defined(ASE_WRITE_DEPTH_CONSERVATIVE) && (SHADER_TARGET >= 45)
@@ -401,7 +401,7 @@ Shader "Noise Test"
 
 			float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
 			{
-				return fbmd(UV,Gain,Lacunarity,Octaves,GradientStrength);
+				return fbmd(UV,Gain,Lacunarity,Octaves);
 			}
 			
 
@@ -931,7 +931,7 @@ Shader "Noise Test"
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
 			#define _NORMALMAP 1
-			#define ASE_VERSION 19911
+			#define ASE_VERSION 19912
 			#define ASE_SRP_VERSION 170300
 
 
@@ -967,7 +967,7 @@ Shader "Noise Test"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			#include "Assets/Shaders/FBMNoise.cginc"
+			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 			#if defined(ASE_WRITE_DEPTH_CONSERVATIVE) && (SHADER_TARGET >= 45)
@@ -1241,7 +1241,7 @@ Shader "Noise Test"
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
 			#define _NORMALMAP 1
-			#define ASE_VERSION 19911
+			#define ASE_VERSION 19912
 			#define ASE_SRP_VERSION 170300
 
 
@@ -1275,7 +1275,7 @@ Shader "Noise Test"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/LODCrossFade.hlsl"
             #endif
 
-			#include "Assets/Shaders/FBMNoise.cginc"
+			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 			#if defined(ASE_WRITE_DEPTH_CONSERVATIVE) && (SHADER_TARGET >= 45)
@@ -1525,7 +1525,7 @@ Shader "Noise Test"
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
 			#define _NORMALMAP 1
-			#define ASE_VERSION 19911
+			#define ASE_VERSION 19912
 			#define ASE_SRP_VERSION 170300
 
 			#pragma shader_feature EDITOR_VISUALIZATION
@@ -1557,7 +1557,7 @@ Shader "Noise Test"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
 			#define ASE_NEEDS_TEXTURE_COORDINATES0
-			#include "Assets/Shaders/FBMNoise.cginc"
+			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 			struct Attributes
@@ -1627,7 +1627,7 @@ Shader "Noise Test"
 
 			float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
 			{
-				return fbmd(UV,Gain,Lacunarity,Octaves,GradientStrength);
+				return fbmd(UV,Gain,Lacunarity,Octaves);
 			}
 			
 
@@ -1837,7 +1837,7 @@ Shader "Noise Test"
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
 			#define _NORMALMAP 1
-			#define ASE_VERSION 19911
+			#define ASE_VERSION 19912
 			#define ASE_SRP_VERSION 170300
 
 
@@ -1867,7 +1867,7 @@ Shader "Noise Test"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
 			#define ASE_NEEDS_TEXTURE_COORDINATES0
-			#include "Assets/Shaders/FBMNoise.cginc"
+			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 			struct Attributes
@@ -1930,7 +1930,7 @@ Shader "Noise Test"
 
 			float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
 			{
-				return fbmd(UV,Gain,Lacunarity,Octaves,GradientStrength);
+				return fbmd(UV,Gain,Lacunarity,Octaves);
 			}
 			
 
@@ -2120,7 +2120,7 @@ Shader "Noise Test"
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
 			#define _NORMALMAP 1
-			#define ASE_VERSION 19911
+			#define ASE_VERSION 19912
 			#define ASE_SRP_VERSION 170300
 
 
@@ -2161,7 +2161,7 @@ Shader "Noise Test"
 			#endif
 
 			#define ASE_NEEDS_TEXTURE_COORDINATES0
-			#include "Assets/Shaders/FBMNoise.cginc"
+			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 			#if defined(ASE_WRITE_DEPTH_CONSERVATIVE) && (SHADER_TARGET >= 45)
@@ -2235,7 +2235,7 @@ Shader "Noise Test"
 
 			float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
 			{
-				return fbmd(UV,Gain,Lacunarity,Octaves,GradientStrength);
+				return fbmd(UV,Gain,Lacunarity,Octaves);
 			}
 			
 
@@ -2505,7 +2505,7 @@ Shader "Noise Test"
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
 			#define _NORMALMAP 1
-			#define ASE_VERSION 19911
+			#define ASE_VERSION 19912
 			#define ASE_SRP_VERSION 170300
 
 
@@ -2587,7 +2587,7 @@ Shader "Noise Test"
 			#endif
 
 			#define ASE_NEEDS_TEXTURE_COORDINATES0
-			#include "Assets/Shaders/FBMNoise.cginc"
+			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 			#if defined(ASE_WRITE_DEPTH_CONSERVATIVE) && (SHADER_TARGET >= 45)
@@ -2683,7 +2683,7 @@ Shader "Noise Test"
 
 			float4 FBMWithGradient( float2 UV, int Octaves, float Gain, float Lacunarity, float GradientStrength )
 			{
-				return fbmd(UV,Gain,Lacunarity,Octaves,GradientStrength);
+				return fbmd(UV,Gain,Lacunarity,Octaves);
 			}
 			
 
@@ -3081,7 +3081,7 @@ Shader "Noise Test"
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
 			#define _NORMALMAP 1
-			#define ASE_VERSION 19911
+			#define ASE_VERSION 19912
 			#define ASE_SRP_VERSION 170300
 
 
@@ -3115,7 +3115,7 @@ Shader "Noise Test"
 			#include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#include "Assets/Shaders/FBMNoise.cginc"
+			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 			#if defined(ASE_WRITE_DEPTH_CONSERVATIVE) && (SHADER_TARGET >= 45)
@@ -3361,7 +3361,7 @@ Shader "Noise Test"
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
 			#define _NORMALMAP 1
-			#define ASE_VERSION 19911
+			#define ASE_VERSION 19912
 			#define ASE_SRP_VERSION 170300
 
 
@@ -3395,7 +3395,7 @@ Shader "Noise Test"
 			#include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			#include "Assets/Shaders/FBMNoise.cginc"
+			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 			#if defined(ASE_WRITE_DEPTH_CONSERVATIVE) && (SHADER_TARGET >= 45)
@@ -3642,7 +3642,7 @@ Shader "Noise Test"
 			#define ASE_FOG 1
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY
 			#define _NORMALMAP 1
-			#define ASE_VERSION 19911
+			#define ASE_VERSION 19912
 			#define ASE_SRP_VERSION 170300
 
 
@@ -3679,7 +3679,7 @@ Shader "Noise Test"
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/MotionVectorsCommon.hlsl"
 
-			#include "Assets/Shaders/FBMNoise.cginc"
+			#include "Assets/Shaders/Final/FBMNoise.cginc"
 
 
 			#if defined(ASE_WRITE_DEPTH_CONSERVATIVE) && (SHADER_TARGET >= 45)
@@ -3907,7 +3907,7 @@ Shader "Noise Test"
 	Fallback Off
 }
 /*ASEBEGIN
-Version=19911
+Version=19912
 {"type":"AmplifyShaderEditor.CustomExpressionNode, AmplifyShaderEditor","id":15,"pos":[-936,-1048],"params":["Inherit","False","return fbm(UV,Gain,Octaves);","1","Create","3","False","UV","FLOAT2","0,0","In","","Inherit","False","False","Octaves","INT","1","In","","Inherit","False","True","Gain","FLOAT","0.5","In","","Inherit","False","FBM Noise","False","False","0","","False","3","0","FLOAT2","0,0","False","1","INT","1","False","2","FLOAT","0.5","False","1","FLOAT","0"]}
 {"type":"AmplifyShaderEditor.CustomExpressionNode, AmplifyShaderEditor","id":55,"pos":[-784,-1240],"params":["Inherit","False","return fbmGradient(UV,Gain,Octaves,UVOffset,GradientStrength);","3","Create","5","False","UV","FLOAT2","0,0","In","","Inherit","False","False","Octaves","INT","1","In","","Inherit","False","False","Gain","FLOAT","0.5","In","","Inherit","False","True","UVOffset","FLOAT","0","In","","Inherit","False","True","GradientStrength","FLOAT","1","In","","Inherit","False","FBM Gradient","False","False","0","","False","5","0","FLOAT2","0,0","False","1","INT","1","False","2","FLOAT","0.5","False","3","FLOAT","0","False","4","FLOAT","1","False","1","FLOAT3","0"]}
 {"type":"AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor","id":48,"pos":[-1112,-1240],"params":["Inherit","False","Property","_GradientOffset","Gradient Offset","4","0","Create","True","0","0","0","False","0","False","Object","-1","","0","0","0","1","0","1","FLOAT","0"]}
@@ -3924,7 +3924,7 @@ Version=19911
 {"type":"AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor","id":115,"pos":[216,-424],"params":["Inherit","False","Property","_GradientEdgeSmoothness","Gradient Edge Smoothness","6","0","Create","True","0","0","0","False","0","False","Object","-1","","0.1","0","0","1","0","1","FLOAT","0"]}
 {"type":"AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor","id":56,"pos":[-1032,-544],"params":["Inherit","False","Property","_GradientStrength","Gradient Strength","5","0","Create","True","0","0","0","False","0","False","Object","-1","","0","0","0","5","0","1","FLOAT","0"]}
 {"type":"AmplifyShaderEditor.IntNode, AmplifyShaderEditor","id":14,"pos":[-1160,-104],"params":["Inherit","False","Property","_Octaves","Octaves","0","0","Create","True","0","0","0","False","0","False","Object","-1","","5","2","False","1","6","0","1","INT","0"]}
-{"type":"AmplifyShaderEditor.CustomExpressionNode, AmplifyShaderEditor","id":81,"pos":[-720,-344],"params":["Inherit","False","return fbmd(UV,Gain,Lacunarity,Octaves,GradientStrength);","4","Create","5","False","UV","FLOAT2","0,0","In","","Inherit","False","False","Octaves","INT","1","In","","Inherit","False","False","Gain","FLOAT","0.5","In","","Inherit","False","False","Lacunarity","FLOAT","2","In","","Inherit","False","True","GradientStrength","FLOAT","0","In","","Inherit","False","FBM With Gradient","False","False","0","","False","5","0","FLOAT2","0,0","False","1","INT","1","False","2","FLOAT","0.5","False","3","FLOAT","2","False","4","FLOAT","0","False","1","FLOAT4","0"]}
+{"type":"AmplifyShaderEditor.CustomExpressionNode, AmplifyShaderEditor","id":81,"pos":[-720,-344],"params":["Inherit","False","return fbmd(UV,Gain,Lacunarity,Octaves);","4","Create","5","False","UV","FLOAT2","0,0","In","","Inherit","False","False","Octaves","INT","1","In","","Inherit","False","False","Gain","FLOAT","0.5","In","","Inherit","False","False","Lacunarity","FLOAT","2","In","","Inherit","False","True","GradientStrength","FLOAT","0","In","","Inherit","False","FBM With Gradient","False","False","0","","False","5","0","FLOAT2","0,0","False","1","INT","1","False","2","FLOAT","0.5","False","3","FLOAT","2","False","4","FLOAT","0","False","1","FLOAT4","0"]}
 {"type":"AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor","id":98,"pos":[1312,-544],"params":["Float","False","True","-1","3","UnityEditor.ShaderGraphLitGUI","0","15","Noise Test","94348b07e5e8bab40bd6c8a1e3df54cd","True","Forward","0","1","Forward","22","False","False","False","False","False","False","False","False","False","False","False","False","True","0","False","","False","True","0","False","","False","False","False","False","False","False","False","False","False","True","False","0","False","","255","False","","255","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","False","True","1","False","","True","3","False","","True","True","0","False","","0","False","","False","True","4","RenderPipeline=UniversalPipeline","RenderType=Opaque=RenderType","Queue=Geometry=Queue=0","UniversalMaterialType=Lit","True","5","True","14","all","0","False","True","1","1","False","","0","False","","0","1","False","","0","False","","False","False","False","False","False","False","False","False","False","False","False","False","False","False","True","True","True","True","True","0","False","","False","False","False","False","False","False","False","True","False","0","False","","255","False","","255","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","False","True","1","False","","True","3","False","","True","True","0","False","","0","False","","False","True","1","LightMode=UniversalForward","False","False","2","Include","","False","","Native","False","0","0","","Include","","True","febec3adb872b90429418d9516a0f0f9","Custom","False","0","0","","","0","0","Standard","52","Category","0","0","  Instanced Terrain Normals","1","0","Lighting Model","0","0","Workflow","1","0","Surface","0","0","  Keep Alpha","0","0","  Refraction Model","0","0","  Blend","0","0","Two Sided","1","0","Alpha Clipping","0","0","  Use Shadow Threshold","0","0","Fragment Normal Space","0","0","Forward Only","0","0","Transmission","0","0","  Transmission Shadow","0.5,False,","0","Translucency","0","0","  Translucency Strength","1,False,","0","  Normal Distortion","0.5,False,","0","  Scattering","2,False,","0","  Direct","0.9,False,","0","  Ambient","0.1,False,","0","  Shadow","0.5,False,","0","Cast Shadows","1","0","Receive Shadows","2","0","Specular Highlights","2","0","Environment Reflections","2","0","Receive SSAO","1","0","Motion Vectors","1","0","  Additional Motion Vectors","1","0","  Alembic Motion Vectors","0","0","  XR Motion Vectors","0","0","GPU Instancing","1","0","LOD CrossFade","1","0","Built-in Fog","1","0","_FinalColorxAlpha","0","0","Meta Pass","1","0","Override Baked GI","0","0","Extra Pre Pass","0","0","Tessellation","0","0","  Phong","0","0","  Strength","0.5,False,","0","  Type","0","0","  Tess","16,False,","0","  Min","10,False,","0","  Max","25,False,","0","  Edge Length","16,False,","0","  Max Displacement","25,False,","0","Write Depth","0","0","  Conservative","0","0","Vertex Position","1","0","Debug Display","1","0","Clear Coat","0","0","0","12","False","True","True","True","True","True","True","True","True","True","True","False","False","","False","0"]}
 {"type":"AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor","id":97,"pos":[904,-120],"params":["Float","False","False","-1","3","UnityEditor.ShaderGraphLitGUI","0","1","New Amplify Shader","94348b07e5e8bab40bd6c8a1e3df54cd","True","ExtraPrePass","0","0","ExtraPrePass","6","False","False","False","False","False","False","False","False","False","False","False","False","True","0","False","","False","True","0","False","","False","False","False","False","False","False","False","False","False","True","False","0","False","","255","False","","255","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","False","True","1","False","","True","3","False","","True","True","0","False","","0","False","","False","True","4","RenderPipeline=UniversalPipeline","RenderType=Opaque=RenderType","Queue=Geometry=Queue=0","UniversalMaterialType=Lit","True","5","True","14","all","0","False","True","1","1","False","","0","False","","0","1","False","","0","False","","False","False","False","False","False","False","False","False","False","False","False","False","True","0","False","","False","True","True","True","True","True","0","False","","False","False","False","False","False","False","False","True","False","0","False","","255","False","","255","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","False","True","1","False","","True","3","False","","True","True","0","False","","0","False","","False","True","0","False","False","0","","0","0","Standard","0","False","0"]}
 {"type":"AmplifyShaderEditor.TemplateMultiPassMasterNode, AmplifyShaderEditor","id":99,"pos":[904,-120],"params":["Float","False","False","-1","3","UnityEditor.ShaderGraphLitGUI","0","1","New Amplify Shader","94348b07e5e8bab40bd6c8a1e3df54cd","True","ShadowCaster","0","2","ShadowCaster","0","False","False","False","False","False","False","False","False","False","False","False","False","True","0","False","","False","True","0","False","","False","False","False","False","False","False","False","False","False","True","False","0","False","","255","False","","255","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","0","False","","False","True","1","False","","True","3","False","","True","True","0","False","","0","False","","False","True","4","RenderPipeline=UniversalPipeline","RenderType=Opaque=RenderType","Queue=Geometry=Queue=0","UniversalMaterialType=Lit","True","5","True","14","all","0","False","False","False","False","False","False","False","False","False","False","False","False","True","0","False","","False","False","False","True","False","False","False","False","0","False","","False","False","False","False","False","False","False","False","False","True","1","False","","True","3","False","","False","False","True","1","LightMode=ShadowCaster","False","False","0","","0","0","Standard","0","False","0"]}
@@ -3955,4 +3955,4 @@ Version=19911
 {"wire":[98,0,114,0]}
 {"wire":[98,1,78,0]}
 ASEEND*/
-//CHKSM=6EB3BACA3E99C88AE2A715B543FACD5589CD4312
+//CHKSM=5D49166C53DF4136B28FEA0F15429D8EBB8416C0
