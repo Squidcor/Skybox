@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-719484467361944266
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
+  version: 10
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sky Sunny
+  m_Shader: {fileID: 4800000, guid: e75b19526d2b276458b70db05d248fa5, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _CLOUDBLEND_ADD
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _BendExponent: 15.8
+    - _CloudBlend: 1
+    - _CloudCoverage: 0.496
+    - _CloudFadeHeight: 0.297
+    - _CloudFadeSmoothness: 0.232
+    - _CloudHorizonHeight: 0.211
+    - _CloudHorizonStrength: 0.509
+    - _CloudNoiseOctaves: 4
+    - _CloudScale: 3
+    - _CloudSmoothness: 0.091
+    - _DistortionScale: 0.5
+    - _DistortionSpeed: 0.1
+    - _EdgeCutoff: 0.023
+    - _EdgeSmoothness: 0.665
+    - _GroundSmoothness: 0.1
+    - _HorizonExponent: 5.8
+    - _HorizonHeight: 0
+    - _InteriorCutoff: 0.517
+    - _InteriorSmoothness: 0.166
+    - _InteriorTransmission: 0.5
+    - _ScrollDirection: 0
+    - _ScrollSpeed: 0.1
+    - _SunSize: 0.1
+    - _SunnySkyExponent: 13
+    - _TransmissionExponent: 58
+    m_Colors:
+    - _BaseColour: {r: 0.7973923, g: 0.9161335, b: 0.9339623, a: 1}
+    - _EdgeColour: {r: 89.454094, g: 85.56364, b: 70.466194, a: 1}
+    - _GroundColour: {r: 0.23529407, g: 0.30980387, b: 0.35686278, a: 1}
+    - _HorizonColour: {r: 0.68907976, g: 0.801205, b: 0.8962264, a: 1}
+    - _InteriorColour: {r: 0, g: 0.21631068, b: 1, a: 0.3882353}
+    - _SkyColour: {r: 0.42745098, g: 0.6627451, b: 1, a: 1}
+    - _SunColour: {r: 251.01796, g: 187.84665, b: 65.12259, a: 1}
+    - _SunnySkyColour: {r: 0.5518868, g: 0.85037565, b: 1, a: 1}
+    - _TransmissionColour: {r: 47.937256, g: 32.198982, b: 4.748502, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

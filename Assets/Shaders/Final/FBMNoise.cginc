@@ -31,34 +31,21 @@ float3 noised(in float2 uv)
 
 
 
-float4 fbmd(in float2 uv, in float gain, in float lacunarity, in int octaves, in float distortionAmount, in float distortionExponent)
+float4 fbmd(in float2 uv, in float gain, in float lacunarity, in int octaves, in float2 distortionDirection, in float distortionAmount, in float distortionExponent)
 {
 
     float value = 0.0;
     float amplitude = 1.0;
     float totalAmplitude = 0;
-
     float2 gradient = float2(0.0, 0.0);
-    float offset = 0;
-    
-    
-    //
-    
-    float maxDistortion = 5.0;
-    float angle = 180;
-    float2 offsetDirection = normalize(float2(1.0, -1.0));
-    
+
+
     for (int i = 0; i < octaves; i++)
     {
-      //  float angle = (120.0 * i) * 0.0174532925;
-        
-        offsetDirection *= offsetDirection;
-
         float distortion = pow((float) i / octaves, distortionExponent) * distortionAmount;
-       // float offset = float2(cos(angle), sin(angle)) * distortion;
+        float2 offset = distortionDirection * distortion;
         
-        float offset = offsetDirection * distortion;
-        
+        distortionDirection *= -1;
 
         float3 n = noised(uv + offset);
         
